@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NewTKK — O2O Official Automotive Aftermarket & Bengkel Rekanan Marketplace</title>
+<meta name="description" content="NewTKK — Marketplace suku cadang & aftermarket resmi dengan Double Fitment, Tarif Jasa Pasang All-In berbasis Tier Kendaraan, dan Sertifikat Garansi Digital Satu Pintu." />
+<link rel="icon" href="data:," />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace']
+        },
+        colors: {
+          navy:  { DEFAULT: '#0F172A', 800: '#1E293B', 700: '#334155', 600: '#475569' },
+          emerald: { DEFAULT: '#10B981', 50:'#ECFDF5',100:'#D1FAE5',200:'#A7F3D0',300:'#6EE7B7',400:'#34D399',500:'#10B981',600:'#059669',700:'#047857',800:'#065F46',900:'#064E3B' },
+          amberx: { 50:'#FFF7ED',100:'#FFEDD5',200:'#FED7AA',300:'#FDBA74',400:'#FB923C',500:'#F97316',600:'#EA580C',700:'#C2410C',800:'#9A3412',900:'#7C2D12' },
+          sky:    { 50:'#F0F9FF',100:'#E0F2FE',200:'#BAE6FD',300:'#7DD3FC',400:'#38BDF8',500:'#0EA5E9',600:'#0284C7',700:'#0369A1',800:'#075985',900:'#0C4A6E' }
+        },
+        boxShadow: {
+          card: '0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.16)',
+          lift: '0 2px 4px rgba(15,23,42,.06), 0 24px 48px -20px rgba(15,23,42,.30)'
+        },
+        keyframes: {
+          fadeUp: { '0%': { opacity: '0', transform: 'translateY(10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+          popIn:  { '0%': { opacity: '0', transform: 'translateY(12px) scale(.98)' }, '100%': { opacity: '1', transform: 'translateY(0) scale(1)' } }
+        },
+        animation: {
+          fadeUp: 'fadeUp .35s ease-out both',
+          popIn: 'popIn .28s cubic-bezier(.16,1,.3,1) both'
+        }
+      }
+    }
+  };
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; border: 3px solid #fff; }
+  select option { color: #0F172A; }
+  #vehicleSelect option { color: #0F172A; }
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 3px solid #10B981;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body class="bg-[#F8FAFC] font-sans text-navy antialiased selection:bg-emerald-200 selection:text-emerald-900">
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+  <div class="mx-auto flex max-w-[1280px] items-center gap-3 px-4 py-3 sm:px-6">
+    <a href="#" class="flex shrink-0 items-center gap-2.5">
+      <span class="grid h-10 w-10 place-items-center rounded-xl bg-navy text-white shadow-sm">
+        <i data-lucide="wrench" class="h-5 w-5"></i>
+      </span>
+      <span class="hidden leading-none sm:block">
+        <span class="block text-lg font-extrabold tracking-tight">New<span class="text-amberx-600">TKK</span></span>
+        <span class="mt-1 flex items-center gap-1 text-[10px] font-semibold text-emerald-700">
+          <i data-lucide="badge-check" class="h-3 w-3"></i>100% Official Brand &amp; Verified O2O Workshop
+        </span>
+      </span>
+    </a>
+
+    <div class="ml-auto min-w-0 flex-1 md:ml-6 md:max-w-xl">
+      <div class="relative">
+        <i data-lucide="search" class="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-600"></i>
+        <input id="searchInput" type="search" autocomplete="off"
+          class="h-11 w-full rounded-xl border border-slate-300 bg-white pl-10 pr-3 text-sm font-medium outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
+          placeholder="Cari kampas rem, shockbreaker, bi-led, atau ketik &quot;Innova Zenix&quot;..." />
+      </div>
+      <div class="mt-2 flex gap-1.5 overflow-x-auto no-scrollbar">
+        <button data-chip="ready"    class="chip shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-navy-700 transition">Ready Stock</button>
+        <button data-chip="warranty" class="chip shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-navy-700 transition">Garansi Resmi</button>
+        <button data-chip="preorder" class="chip shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-navy-700 transition">Pre-Order</button>
+        <button data-chip="workshop" class="chip shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-navy-700 transition">Wajib Bengkel</button>
+        <button data-chip="allin"    class="chip shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-navy-700 transition">Jasa All-In</button>
+      </div>
+    </div>
+
+    <div class="hidden shrink-0 items-center gap-2 lg:flex">
+      <button class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-navy-700 transition hover:border-navy-700" title="Pesanan Saya"><i data-lucide="package" class="h-5 w-5"></i></button>
+      <button class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-navy-700 transition hover:border-navy-700" title="Garansi Saya"><i data-lucide="shield-check" class="h-5 w-5"></i></button>
+      <button class="flex h-11 items-center gap-2 rounded-xl bg-navy px-4 text-sm font-bold text-white transition hover:bg-navy-800">
+        <i data-lucide="user" class="h-4 w-4"></i>Masuk
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ STICKY GARASI SAYA (SOFT FITMENT TIER 1-4) ══════════ -->
+<section class="sticky top-[89px] z-30 border-b border-slate-200 bg-navy text-white">
+  <div class="mx-auto flex max-w-[1280px] flex-wrap items-center gap-x-3 gap-y-2 px-4 py-2.5 sm:px-6">
+    <div class="flex items-center gap-2">
+      <i data-lucide="car-front" class="h-4 w-4 text-emerald-400"></i>
+      <span class="text-[11px] font-extrabold uppercase tracking-[0.14em] text-white/70">Garasi Saya</span>
+    </div>
+    <div class="relative min-w-0 flex-1 sm:max-w-sm">
+      <select id="vehicleSelect"
+        class="h-10 w-full appearance-none rounded-lg border border-white/15 bg-white/10 pl-3 pr-9 text-sm font-semibold text-white outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/40">
+        <option value="all">Pilih Mobil Anda (Semua Kendaraan)</option>
+        <option value="brio">Honda Brio RS (DD1) - 2023</option>
+        <option value="zenix">Toyota Kijang Innova Zenix (AG10) - 2024</option>
+        <option value="g20">BMW 320i M-Sport (G20) - 2023</option>
+        <option value="wrangler">Jeep Wrangler Rubicon (JL) - 2022</option>
+      </select>
+      <i data-lucide="chevron-down" class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/60"></i>
+    </div>
+    <div id="tierBadge" class="flex items-center gap-2"></div>
+    <p class="ml-auto hidden text-[11px] leading-tight text-white/55 lg:block">
+      <span class="font-semibold text-white/80">Frictionless Soft-Fitment</span> — memilih mobil bersifat opsional, tidak memblokir menjelajah produk.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ HERO + TRUST PILLARS ══════════ -->
+<section class="border-b border-slate-200 bg-white">
+  <div class="mx-auto grid max-w-[1280px] items-center gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:py-14">
+    <div class="animate-fadeUp">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-emerald-800">
+        <i data-lucide="sparkles" class="h-3.5 w-3.5"></i>Marketplace O2O Resmi
+      </span>
+      <h1 class="mt-4 text-3xl font-extrabold leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl">
+        Suku Cadang <span class="text-emerald-600">100% Ori</span>,<br class="hidden sm:block" />
+        Dipasang <span class="text-amberx-600">Bengkel Rekanan Resmi</span>,<br class="hidden sm:block" />
+        Satu Garansi.
+      </h1>
+      <p class="mt-4 max-w-xl text-[15px] leading-relaxed text-navy-600">
+        NewTKK menyatukan Official Brand, Bengkel Rekanan Resmi, dan konsumen dalam satu alur O2O.
+        Harga produk, tarif jasa pasang, hingga garansi instalasi — semuanya transparan
+        <span class="font-semibold text-navy">sebelum</span> Anda membayar.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <button id="ctaPickCar" class="inline-flex h-12 items-center gap-2 rounded-xl bg-navy px-5 text-sm font-bold text-white shadow-card transition hover:bg-navy-800">
+          <i data-lucide="car-front" class="h-4 w-4"></i>Pilih Mobil &amp; Cari Part
+        </button>
+        <button id="ctaHowItWorks" class="inline-flex h-12 items-center gap-2 rounded-xl border-2 border-navy bg-white px-5 text-sm font-bold text-navy transition hover:bg-navy hover:text-white">
+          <i data-lucide="workflow" class="h-4 w-4"></i>Simulasi Cara Kerja O2O &amp; Garansi
+        </button>
+      </div>
+      <dl class="mt-8 grid max-w-lg grid-cols-3 gap-3">
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+          <dt class="text-[10px] font-bold uppercase tracking-wider text-navy-600">Bengkel Rekanan</dt>
+          <dd class="font-mono text-xl font-bold">1.248</dd>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+          <dt class="text-[10px] font-bold uppercase tracking-wider text-navy-600">Official Brand</dt>
+          <dd class="font-mono text-xl font-bold">312</dd>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+          <dt class="text-[10px] font-bold uppercase tracking-wider text-navy-600">Garansi Aktif</dt>
+          <dd class="font-mono text-xl font-bold">98.4%</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="grid gap-3 animate-fadeUp" style="animation-delay:.1s">
+      <article class="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-600 text-white"><i data-lucide="badge-check" class="h-5 w-5"></i></span>
+        <div>
+          <h3 class="text-sm font-extrabold">1. 100% Official Brand Store</h3>
+          <p class="mt-0.5 text-[13px] leading-relaxed text-navy-600">Suku cadang dan aftermarket orisinal dari prinsipal resmi. Setiap SKU tertaut ke nomor seri resmi yang dapat diverifikasi.</p>
+        </div>
+      </article>
+      <article class="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-navy text-white"><i data-lucide="ruler" class="h-5 w-5"></i></span>
+        <div>
+          <h3 class="text-sm font-extrabold">2. Double Fitment &amp; Standar Pasang Bengkel Rekanan</h3>
+          <p class="mt-0.5 text-[13px] leading-relaxed text-navy-600">Validasi kecocokan ganda (Brand x Bengkel) plus tarif jasa transparan <span class="font-semibold">All-In</span> sesuai Tier Kesulitan Kendaraan.</p>
+        </div>
+      </article>
+      <article class="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-amberx-600 text-white"><i data-lucide="shield-check" class="h-5 w-5"></i></span>
+        <div>
+          <h3 class="text-sm font-extrabold">3. Single-Window Digital Warranty Passport</h3>
+          <p class="mt-0.5 text-[13px] leading-relaxed text-navy-600">Garansi Produk Resmi + Garansi Instalasi 30 Hari dalam <span class="font-semibold">1 Sertifikat Digital</span>. Klaim satu pintu, tanpa pingpong Brand dan Bengkel.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 10 ROOT CATEGORIES (ZERO TRUNCATION) ══════════ -->
+<section class="border-b border-slate-200 bg-[#F8FAFC]">
+  <div class="mx-auto max-w-[1280px] px-4 py-10 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h2 class="text-2xl font-extrabold tracking-tight">Jelajahi 10 Kategori Utama</h2>
+        <p class="mt-1 text-sm text-navy-600">Taksonomi <span class="font-mono font-semibold text-navy">Dual-Label</span> &mdash; label pendek untuk grid mobile, nama penuh untuk SEO dan breadcrumb.</p>
+      </div>
+      <button id="catReset" class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-navy-700 transition hover:border-navy">Tampilkan Semua</button>
+    </div>
+    <div id="categoryGrid" class="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5"></div>
+    <p class="mt-3 text-[11px] leading-relaxed text-navy-600">
+      Aturan rendering: <code class="font-mono">ui_short_label</code> maksimal 14 karakter dengan
+      <code class="font-mono">text-xs font-semibold leading-tight break-words</code> &mdash; nol karakter terpotong pada layar 360px.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ FEATURED PRODUCTS ══════════ -->
+<section class="bg-white">
+  <div class="mx-auto max-w-[1280px] px-4 py-10 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h2 class="text-2xl font-extrabold tracking-tight">Produk Unggulan Official Brand</h2>
+        <p id="productFilterNote" class="mt-1 text-sm text-navy-600">Harga produk dan estimasi tarif jasa pasang berdasarkan mobil yang Anda pilih.</p>
+      </div>
+      <div id="vehicleContextNote" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-navy-700"></div>
+    </div>
+    <div id="productGrid" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    <div id="productEmpty" class="mt-6 hidden rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center">
+      <i data-lucide="package-search" class="mx-auto h-8 w-8 text-navy-600"></i>
+      <p class="mt-3 text-sm font-semibold">Tidak ada produk yang cocok dengan filter ini.</p>
+      <button id="emptyReset" class="mt-3 rounded-lg bg-navy px-4 py-2 text-xs font-bold text-white">Reset Filter</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ POST-PURCHASE MOAT SIMULATOR ══════════ -->
+<section id="postPurchase" class="border-y border-slate-200 bg-[#F8FAFC]">
+  <div class="mx-auto max-w-[1280px] px-4 py-12 sm:px-6">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-navy/15 bg-white px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-navy">
+      <i data-lucide="lock" class="h-3.5 w-3.5"></i>Preview Pasca-Pembelian
+    </span>
+    <h2 class="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl">Lihat Simulasi Pasca-Pembelian: Tiket Supir, Bukti QC Watermark &amp; Garansi Digital</h2>
+    <p class="mt-1 max-w-2xl text-sm text-navy-600">Tiga lapisan yang mengunci konsumen di ekosistem NewTKK: delegasi kedatangan, bukti mutu terverifikasi, dan sertifikat garansi yang mengikuti mobil.</p>
+
+    <div class="mt-6 flex gap-1.5 overflow-x-auto rounded-xl border border-slate-200 bg-white p-1.5 no-scrollbar">
+      <button data-post-tab="pass"     class="post-tab shrink-0 rounded-lg px-3.5 py-2 text-xs font-bold transition sm:text-sm">Tiket Kedatangan Supir</button>
+      <button data-post-tab="qc"       class="post-tab shrink-0 rounded-lg px-3.5 py-2 text-xs font-bold transition sm:text-sm">Bukti QC Watermark</button>
+      <button data-post-tab="warranty" class="post-tab shrink-0 rounded-lg px-3.5 py-2 text-xs font-bold transition sm:text-sm">Garansi Digital</button>
+    </div>
+    <div id="postPanel" class="mt-4"></div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="bg-navy text-white">
+  <div class="mx-auto max-w-[1280px] px-4 py-10 sm:px-6">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="grid h-9 w-9 place-items-center rounded-lg bg-white/10"><i data-lucide="wrench" class="h-4 w-4"></i></span>
+          <span class="text-lg font-extrabold">New<span class="text-emerald-400">TKK</span></span>
+        </div>
+        <p class="mt-3 text-[13px] leading-relaxed text-white/60">Marketplace O2O suku cadang dan aftermarket resmi dengan bengkel rekana terverifikasi serta garansi digital satu pintu.</p>
+      </div>
+      <div>
+        <h4 class="text-xs font-extrabold uppercase tracking-wider text-white/50">Portal</h4>
+        <ul class="mt-3 space-y-2 text-[13px] text-white/70">
+          <li>Customer Storefront</li><li>Official Brand Portal</li><li>Workshop Partner Portal</li><li>Super Admin Backoffice</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs font-extrabold uppercase tracking-wider text-white/50">Kebijakan</h4>
+        <ul class="mt-3 space-y-2 text-[13px] text-white/70">
+          <li>Garansi Satu Pintu</li><li>Tarif Jasa All-In Standar</li><li>Anti-Bypass Transaction</li><li>Kebijakan Privasi</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs font-extrabold uppercase tracking-wider text-white/50">Kontak</h4>
+        <ul class="mt-3 space-y-2 font-mono text-[13px] text-white/70">
+          <li>help@newtkk.co.id</li><li>+62 21 5000 1889</li><li>Jakarta - Tangerang - Surabaya</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-white/10 pt-5 text-[11px] text-white/40">
+      <span>&copy; 2026 NewTKK. Prototipe UI interaktif - data contoh fiktif.</span>
+      <span class="font-mono text-white/70">Baseline: Oktober 2026 - Guardrails AGENTS.md v.1</span>
+    </div>
+  </div>
+</footer>
+
+<button id="floatingWarranty" aria-label="Simulasi Pasca-Pembelian" class="fixed bottom-5 right-5 z-30 inline-flex items-center gap-2 rounded-full bg-navy px-4 py-3 text-xs font-bold text-white shadow-lift transition hover:bg-navy-800">
+  <i data-lucide="shield-check" class="h-4 w-4 text-emerald-400"></i>
+  <span class="hidden sm:inline">Simulasi Pasca-Pembelian</span>
+</button>
+
+<!-- ══════════ MODAL 1: PDP + O2O WIDGET ══════════ -->
+<div id="pdpBackdrop" class="fixed inset-0 z-50 hidden overflow-y-auto bg-navy/60 backdrop-blur-sm sm:p-4 md:p-8" role="dialog" aria-modal="true" aria-labelledby="pdpTitle">
+  <div id="pdpPanel" class="relative mx-auto min-h-full w-full max-w-6xl animate-popIn overflow-hidden bg-white shadow-lift sm:min-h-0 sm:rounded-3xl"></div>
+</div>
+
+<!-- ══════════ MODAL 2: SIMULASI CARA KERJA ══════════ -->
+<div id="howBackdrop" class="fixed inset-0 z-50 hidden overflow-y-auto bg-navy/60 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="howTitle">
+  <div class="relative mx-auto max-w-3xl animate-popIn overflow-hidden rounded-3xl bg-white shadow-lift">
+    <div class="flex items-start justify-between gap-4 border-b border-slate-200 px-6 py-5">
+      <div>
+        <h3 id="howTitle" class="text-xl font-extrabold tracking-tight">Simulasi Cara Kerja O2O dan Garansi</h3>
+        <p class="mt-1 text-[13px] text-navy-600">Enam langkah dari memilih mobil sampai sertifikat garansi digital terbit.</p>
+      </div>
+      <button aria-label="Tutup simulasi" data-close="how" class="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-slate-200 text-navy-600 transition hover:bg-slate-50 hover:text-navy"><i data-lucide="x" class="h-5 w-5"></i></button>
+    </div>
+    <div id="howPanel" class="max-h-[70vh] overflow-y-auto px-6 py-5"></div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════════
+   NEWTKK PROTOTYPE ENGINE
+   Data bersumber dari docs/01 (PRD), docs/02 (Functional Specs),
+   docs/03 (Master Seeder) dan docs/05 (Wireframe Specs).
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── TIER KENDARAAN (docs/01 §3.2) ─── */
+const TIERS = {
+  TIER_1: { label: 'Compact / City Car / LCGC',           short: 'Tier 1', note: 'Kaki-kaki & kelistrikan sederhana, ruang mesin mudah, pengerjaan cepat.' },
+  TIER_2: { label: 'Medium MPV / SUV / Sedan',            short: 'Tier 2', note: 'Sasis monocoque Asia, komponen standar umum, bobot menengah.' },
+  TIER_3: { label: 'Large MPV / Luxury / European / EV',  short: 'Tier 3', note: 'Multi-link presisi, sensor & elektronik kompleks, torsi khusus.' },
+  TIER_4: { label: 'Heavy-Duty 4x4 / Supercar / Extreme', short: 'Tier 4', note: 'Butuh heavy-duty lift dan teknisi spesialis senior.' }
+};
+
+/* ─── MASTER KENDARAAN (docs/03 SEED_MASTER_VEHICLES_INDONESIA) ─── */
+const VEHICLES = {
+  all:      { id: 'all',      label: 'Pilih Mobil Anda (Semua Kendaraan)',  tier: null,        shortName: 'Semua Kendaraan', plate: '',    note: '' },
+  brio:     { id: 'brio',     label: 'Honda Brio RS (DD1) - 2023',           tier: 'TIER_1', shortName: 'Honda Brio RS',            plate: 'B 1234 TKK', note: '1.2L i-VTEC (L12B) - PCD 4x100' },
+  zenix:    { id: 'zenix',    label: 'Toyota Kijang Innova Zenix (AG10) - 2024', tier: 'TIER_2', shortName: 'Innova Zenix',         plate: 'B 1889 TKK', note: '2.0 Hybrid TNGA-C (M20A-FXS) - PCD 5x114.3' },
+  g20:      { id: 'g20',      label: 'BMW 320i M-Sport (G20) - 2023',       tier: 'TIER_3', shortName: 'BMW 320i G20',            plate: 'B 932 ABD', note: 'B48B20 TwinPower Turbo - PCD 5x112' },
+  wrangler: { id: 'wrangler', label: 'Jeep Wrangler Rubicon (JL) - 2022',   tier: 'TIER_4', shortName: 'Jeep Wrangler Rubicon',  plate: 'B 9021 JLX',  note: '2.0T Hurricane (GME-T4) - 4x4 - PCD 5x127' }
+};
+
+/* ─── 10 ROOT CATEGORIES: DUAL-LABEL (docs/01 §4) ─── */
+const CATEGORIES = [
+  { code:'CAT-01', short:'Kaki-Kaki',      full:'Suspensi, Kaki-Kaki & Kemudi',       sub:'Shockbreaker, Coilover, Lowering Kit, Tie Rod, Ball Joint, Strut Bar', icon:'settings-2' },
+  { code:'CAT-02', short:'Pengereman',     full:'Sistem Pengereman (Brakes)',          sub:'Kampas Rem, Piringan Cakram Rotor, Big Brake Kit, Selang Rem, Minyak Rem', icon:'disc-3' },
+  { code:'CAT-03', short:'Velg & Ban',     full:'Velg, Ban & Aksesoris Roda',         sub:'Velg Casting/Flow Form/Forged, Ban Harian & EV, Mur Roda, Sensor TPMS', icon:'circle-dot' },
+  { code:'CAT-04', short:'Oli & Servis',   full:'Oli, Fluida & Servis Berkala',       sub:'Oli Mesin, Oli Transmisi ATF/CVT, Filter, Busi Iridium, Wiper', icon:'droplet' },
+  { code:'CAT-05', short:'Performa',       full:'Performa Mesin, Intake & Exhaust',    sub:'Knalpot Racing, Air Intake, Intercooler Kit, Piggyback ECU', icon:'gauge' },
+  { code:'CAT-06', short:'Pendingin & AC', full:'Pendingin Mesin & Sistem AC',         sub:'Radiator K-Wave, Kompresor AC, Water Pump, Thermostat, Coolant', icon:'thermometer-snowflake' },
+  { code:'CAT-07', short:'Transmisi',      full:'Transmisi, Kopling & Drivetrain',     sub:'Paket Kopling, As Roda, CV Joint, Engine Mounting, LSD', icon:'cog' },
+  { code:'CAT-08', short:'Kelistrikan',    full:'Lampu, Aki, Dashcam & Elektrikal',    sub:'Projektor Bi-LED, Dashcam 4K, Aki MF/AGM, Klakson, Modul Elektrik', icon:'zap' },
+  { code:'CAT-09', short:'Audio Mobil',    full:'Audio, Head Unit & Peredam Kabin',   sub:'Head Unit Android, Speaker, Subwoofer, DSP, Peredam Kabin', icon:'music-4' },
+  { code:'CAT-10', short:'Bodi & Proteksi',full:'Eksterior, Interior, Proteksi & EV',  sub:'Kaca Film, Ceramic Coating, PPF, Bodykit, Karpet Custom, Wallbox EV', icon:'car-taxi-front' }
+];
+
+/* ─── PRODUK + MATRIKS TARIF TIER 1-4 (workshop_branch_service_rates) ─── */
+const PRODUCTS = [
+  {
+    id:'p-tein', cat:'CAT-01', brand:'TEIN', mandatory:false,
+    name:'TEIN EnduraPro Plus Shockbreaker Set (4 Pcs)',
+    sku:'TEIN-EP11-AG10-FS4', sub:'Full Set Depan & Belakang - Reactive Hydro-Pneumatic Technology',
+    price:6850000, fitMode:'SPECIFIC_FIT', fitModels:['zenix','brio','g20'],
+    avail:'READY', leadDays:0, serviceType:'SVC-SUSP-COILOVER',
+    rates:{TIER_1:350000,TIER_2:450000,TIER_3:650000,TIER_4:900000},
+    warranty:{months:12, type:'FUNCTIONAL_PERIODIC'},
+    specs:['Damping Adjustable 16+1 klik rebound, 12+1 klik kompresi','Beban poros 4.8 ton (kelas SUV/MPV)','Estimasi umur pakai 60.000 km','Dilengkapi dust boot dan bushing karet original'],
+    included:['Pemasangan 4 shockbreaker pada hole mounting original mounting','Pembongkaran dan pemasangan komponen(original)','Setelan awal tekanan gas sesuai spesifikasi','Pemeriksaan rem wheel sensor setelah pemasangan','Baud, mur standar, dan grease pelumas'],
+    excluded:['Spooring 3D presisi (jika dipilih terpisah)','Penggantian Upper / Lower Control Arm','Pelumas tambahan non standar di luar paket']
+  },
+  {
+    id:'p-brembo', cat:'CAT-02', brand:'BREMBO & AKEBONO', mandatory:false,
+    name:'Brembo Sport Brake Pad Kit + Akebono Ceramic Pad',
+    sku:'BRM-SP-3137B219-AKB-AN', sub:'Poros Depan - Semi-Metallic Low-Dust, Thickness 17.2 mm',
+    price:2450000, fitMode:'SPECIFIC_FIT', fitModels:['zenix','g20','brio'],
+    avail:'READY', leadDays:0, serviceType:'SVC-BRAKE-PAD-AXLE',
+    rates:{TIER_1:300000,TIER_2:400000,TIER_3:600000,TIER_4:800000},
+    warranty:{months:6, type:'AUTHENTICITY_AND_DOA'},
+    specs:['Material compound semi-metallic low-dust','Compatible DOT 4, thickness 17.2 mm','Cold bedding 200 km untuk mencapai performa penuh','Termasuk hardware kit dan anti-rust'],
+    included:['Penggantian kampas rem poros depan','Pembersihan dan pelumasan kaliper standar','Pemeriksaan ketebalan rotor dan selang rem','Pengencangan baut sesuai spesifikasi OEM'],
+    excluded:['Kuras total jalur rem','Penggantian disc rotor atau Kaliper Big Brake','Pengisian penuh minyak rem DOT 4']
+  },
+  {
+    id:'p-michelin', cat:'CAT-03', brand:'MICHELIN', mandatory:false,
+    name:'Michelin Pilot Sport 4 - 225/45 R17',
+    sku:'MIC-PS4-22545R17-99Y', sub:'Ultra High Performance - Asymmetric Tread, Load/Speed Index 99Y',
+    price:2350000, fitMode:'SPEC_BASED', fitModels:[],
+    avail:'READY', leadDays:0, serviceType:'SVC-TIRE-MOUNT-BALANCE',
+    rates:{TIER_1:180000,TIER_2:220000,TIER_3:320000,TIER_4:450000},
+    warranty:{months:36, type:'FUNCTIONAL_PERIODIC'},
+    specs:['Ukuran 225/45 R17, Load/Speed Index 99Y','Wet Grip A, Rolling Resistance B','Compound silica-blend generasi terbaru','Umur pakai estimasi 45.000 km (beban normal)'],
+    included:['Pemasangan ban ke velg sesuai prosedur pabrikan','Balancing roda presisi pada mesin dynamometer','Pengecekan tekanan udara dan kelokan velg','Pemeriksaan keausan pin rem dan ketebalan rotor'],
+    excluded:['Pembelian velg baru','Perbaikan ban yang bocor di tengah','Spooring 3D Wheel Alignment']
+  },
+  {
+    id:'p-shell', cat:'CAT-04', brand:'SHELL HELIX', mandatory:false,
+    name:'Shell Helix Ultra ECT 0W-20 Full Synthetic + Filter Paket',
+    sku:'SHL-UECT0W20-4L-PKT-01', sub:'Paket Servis Berkala 4.3 L - Filter Oli dan Filter Udara OEM-equivalent',
+    price:1375000, fitMode:'SPEC_BASED', fitModels:[],
+    avail:'READY', leadDays:0, serviceType:'SVC-OIL-ENGINE-CHANGE',
+    rates:{TIER_1:150000,TIER_2:200000,TIER_3:300000,TIER_4:450000},
+    warranty:{months:6, type:'AUTHENTICITY_AND_DOA'},
+    specs:['SAE 0W-20 Full Synthetic Group IV+ (Polyalphaolefin)','Memenuhi API SP dan ILSAC GF-5A','Volume 4 L, termasuk filter oli dan filter udara OEM-equivalent'],
+    included:['Tukar oli mesin, ganti filter oli dan filter udara','Pemeriksaan level oli dan kebocoran pada seal','Reset service interval ke ECU bila didukung kendaraan','Penanganan oli bekas terpisah sesuai standar lingkungan bengkel'],
+    excluded:['Penggantian oli transmisi ATF atau CVT fluid','Penggantian coolant radiator','Penggantian busi Iridium (apabila belum berganti)']
+  },
+  {
+    id:'p-exhaust', cat:'CAT-05', brand:'KAGOME', mandatory:false,
+    name:'Kagome Full System Knalpot Stainless AG10 (76 mm)',
+    sku:'KAG-SS-AG10-FS-76MM', sub:'Material SUS304 - Remover 42 g/L - Bracket Penguat OEM Reinforced',
+    price:7450000, fitMode:'SPECIFIC_FIT', fitModels:['zenix'],
+    avail:'READY', leadDays:0, serviceType:'SVC-EXHAUST-FULL',
+    rates:{TIER_1:450000,TIER_2:600000,TIER_3:850000,TIER_4:1200000},
+    warranty:{months:24, type:'FUNCTIONAL_PERIODIC'},
+    specs:['Pipa stainless SUS304 diameter 76 mm','Remisi gas 42 g/L (standar emisi lokal)','Dilengkapi bracket penguat tambahan','Packing wool tahan suhu hingga 800 derajat C'],
+    included:['Pembongkaran dan pemasangan full exhaust system','Pemasangan bracket penguat tambahan','Penyetelan dan pembungkus ulang bagian panas','Uji kebocoran (leak test) setelah pemasangan selesai'],
+    excluded:['Spooring dan setelan ECU atau piggyback','Perbaikan catalytic converter','Garansi hangus bila dipasang di luar Bengkel Rekanan']
+  },
+  {
+    id:'p-radiator', cat:'CAT-06', brand:'DENSO PREMIUM', mandatory:false,
+    name:'Denso Premium Radiator Aluminium K-Wave Fin (AG10)',
+    sku:'DNS-RAD-AG10-KW-01', sub:'K-Wave Micro Fin - Anti-Karat pada Tabung Air',
+    price:2180000, fitMode:'SPECIFIC_FIT', fitModels:['zenix','brio'],
+    avail:'READY', leadDays:0, serviceType:'SVC-RADIATOR-REPLACE',
+    rates:{TIER_1:280000,TIER_2:380000,TIER_3:600000,TIER_4:850000},
+    warranty:{months:24, type:'FUNCTIONAL_PERIODIC'},
+    specs:['Core aluminium dengan mikro fin K-Wave','Kapasitas volume penuh 1.6 L','Karet seal EPDM tahan panas dan coolant','Sudah termasuk drain plug dan bracket'],
+    included:['Pembongkaran dan pemasangan radiator','Pengisian ulang air radiator dan coolant','Pengevakan udara pada sistem pendingin','Pemeriksaan kebocoran setelah pemasangan'],
+    excluded:['Penggantian water pump dan thermostat','Jasa overhaul mesin (di luar paket pasang radiator)','Perbaikan kompresor AC']
+  },
+  {
+    id:'p-clutch', cat:'CAT-07', brand:'VALEO', mandatory:false,
+    name:'Valeo Clutch Kit + Release Bearing (Set Lengkap)',
+    sku:'VLO-CCK-M20A-AG10-01', sub:'Disc Clutch 235 mm - Kompatibel M20A-FXS dan M20A-FKS',
+    price:4750000, fitMode:'SPECIFIC_FIT', fitModels:['zenix'],
+    avail:'PRE_ORDER', leadDays:3, serviceType:'SVC-CLUTCH-CHANGE',
+    rates:{TIER_1:650000,TIER_2:850000,TIER_3:1250000,TIER_4:1750000},
+    warranty:{months:24, type:'FUNCTIONAL_PERIODIC'},
+    specs:['Diameter disc 235 mm, tipe organic compound','Release bearing sudah terpreset','Torsi transmisi mengikuti spesifikasi OEM','Ready stock di gudang brand dengan lead time 3 hari kerja'],
+    included:['Pembongkaran transmisi dan pelepasan clutch','Pemasangan clutch kit dan release bearing','Penggantian bahan bantu kerja standar','Pemeriksaan permukaan flywheel dan axial play'],
+    excluded:['Penggantian flywheel mesin','Overhaul transmisi','Penggantian bearing transmisi']
+  },
+  {
+    id:'p-osram', cat:'CAT-08', brand:'OSRAM', mandatory:false,
+    name:'Osram CBI LE Bi-LED Projector Retrofit (2 Lampu)',
+    sku:'OSR-CBILE-6500GT2-01', sub:'6500K Cool White - Precision Cut-off Line - Plug and Play',
+    price:8950000, fitMode:'SPECIFIC_FIT', fitModels:['zenix','brio'],
+    avail:'PRE_ORDER', leadDays:5, serviceType:'SVC-HEADLIGHT-BILED',
+    rates:{TIER_1:400000,TIER_2:550000,TIER_3:850000,TIER_4:1200000},
+    warranty:{months:24, type:'FUNCTIONAL_PERIODIC'},
+    specs:['Chip LED InGaN, suhu warna 6500K','Output sekitar 2.800 lumen per lampu','Precision cut-off line sesuai regulasi lokal','Kipas pendingin berbasis heatsink termal'],
+    included:['Pembongkaran headlamp dan pemasangan modul bi-LED','Penyesuaian sudut sorot (beam alignment)','Pemasangan konektor plug and play tahan air','Pemeriksaan fungsi lampu lain pada kendaraan'],
+    excluded:['Spooring dan canister auto light','Modifikasi cover headlamp aftermarket','Instalasi DRL tambahan non standar']
+  },
+  {
+    id:'p-70mai', cat:'CAT-08', brand:'70MAI', mandatory:false,
+    name:'70mai Dashcam 4K Dual Channel + Hardwire Kit',
+    sku:'70M-DASH-4K-DUAL-V6-HW', sub:'4K Depan + 1080p Belakang - Parking Mode 24 Jam',
+    price:2150000, fitMode:'UNIVERSAL_FIT', fitModels:[],
+    avail:'READY', leadDays:0, serviceType:'SVC-ELEC-DASHCAM-2CH',
+    rates:{TIER_1:200000,TIER_2:250000,TIER_3:350000,TIER_4:500000},
+    warranty:{months:12, type:'FUNCTIONAL_PERIODIC'},
+    specs:['Resolusi 3840x2160 depan dan 1920x1080 belakang','Sensor Sony STARVIS dengan HDR otomatis','Parking Mode 24 jam melalui hardwire fuse tap','Kapasitas memori 64 GB eMMC'],
+    included:['Pemasangan dashcam dan hardwire kit ke fuse box','Routing kabel rapi dengan klip perekat','Uji pairing aplikasi dan pengaturan zona waktu','Penjelasan fitur parking mode'],
+    excluded:['Pembongkaran trim dasbor secara kompleks','Pemasangan kamera 360 derajat di kolong','Integrasi ke sistem CAN-bus OEM']
+  },
+  {
+    id:'p-pioneer', cat:'CAT-09', brand:'PIONEER', mandatory:false,
+    name:'Pioneer Head Unit FH-S7990BT + Frame + Canbus PnP',
+    sku:'PNR-FHS7990BT-FRM-AG10', sub:'Layar 8 inci - Android Auto dan Apple CarPlay - Frame AG10 PnP',
+    price:5850000, fitMode:'SPECIFIC_FIT', fitModels:['zenix'],
+    avail:'PRE_ORDER', leadDays:2, serviceType:'SVC-AUDIO-HEADUNIT',
+    rates:{TIER_1:350000,TIER_2:450000,TIER_3:650000,TIER_4:900000},
+    warranty:{months:12, type:'FUNCTIONAL_PERIODIC'},
+    specs:['Layar 8 inci capacitive, resolusi 800x480','Daya 4 x 50 W MOSFET Class D','Konektivitas Bluetooth, USB, AUX, HDMI-In','Soket Canbus PnP tanpa pemotongan kabel original'],
+    included:['Pemasangan head unit beserta frame AG10','Pemasangan soket Canbus PnP tanpa cutting','Uji fungsi kamera mundur dan audio original','Penjelasan setelan awal equalizer dan crossover'],
+    excluded:['Penggantian speaker dan subwoofer','Pemasangan peredam kabin tambahan','Kabel khusus custom yang tidak PnP']
+  },
+  {
+    id:'p-llumar', cat:'CAT-10', brand:'LLUMAR', mandatory:true,
+    name:'LLumar Platinum Ceramic Kaca Film (Paket 6 Kaca)',
+    sku:'LLM-PLAT-CER-6K-NC-01', sub:'Ceramic Non-Metalik - IRR 70 persen - VLT 5 persen (Gelap)',
+    price:12500000, fitMode:'UNIVERSAL_FIT', fitModels:[],
+    avail:'READY', leadDays:0, serviceType:'SVC-TINT-WINDOW',
+    rates:{TIER_1:900000,TIER_2:1200000,TIER_3:1800000,TIER_4:2400000},
+    warranty:{months:24, type:'FUNCTIONAL_PERIODIC'},
+    specs:['VLT 5 persen gelap, 25 persen sedang, 40 persen terang','IRR 70 persen dan rejected solar energy 78 persen','Ceramic coating tidak mengganggu sinyal GPS','Perlindungan UV hingga 99 persen'],
+    included:['Pemasangan 6 kaca sesuai jadwal dan label registrasi','Pembersihan dan pretreatment kaca di ruang dust-free','Kartu garansi kaca film resmi dengan QR verifikasi','Retouch gelembung minor gratis 7 hari','Instalasi wajib di Bengkel Rekanan (ruang khusus)'],
+    excluded:['Pembongkaran tail light dan garnish','Spooring dan body kit upgrade','Perbaikan kaca yang retak akibat benturan luar']
+  }
+];
+
+/* ─── BENGKEL REKANA (Anti-Bypass: tanpa alamat jalan & telepon) ─── */
+const CITIES = ['Tangerang Selatan', 'Jakarta Selatan', 'Surabaya'];
+
+const WORKSHOPS = [
+  { id:'w-nawilis',  city:'Tangerang Selatan', name:'Nawilis Auto Service - Cab. BSD',      rating:4.9, reviews:142, district:'Kec. Serpong',      distance:2.4, factor:1.00, facility:['Ruang pasang AC 4 mobil','Alat alignment matic','Bay QC dokumentasi'] },
+  { id:'w-proauto',  city:'Tangerang Selatan', name:'ProAuto Undercarriage - Bintaro',      rating:4.8, reviews:89,  district:'Kec. Pondok Aren',  distance:5.1, factor:1.05, facility:['Undercarriage lift 2 ton','Hydraulic jack heavy-duty','Ruang tunggu AC'] },
+  { id:'w-spj',      city:'Tangerang Selatan', name:'Serpong Jaya - Kelapa Dua',            rating:4.7, reviews:64,  district:'Kec. Kelapa Dua',  distance:7.8, factor:0.95, facility:['Ruang kaca film tertutup','Booth dust-free exhaust'] },
+  { id:'w-automate', city:'Jakarta Selatan',   name:'Automate Premium - Kebayoran',         rating:4.9, reviews:206, district:'Kec. Kebayoran Baru', distance:3.2, factor:1.08, facility:['8 work bay fast service','Teknisi bersertifikat Bosch','Kamar tunggu premium'] },
+  { id:'w-mkaki',    city:'Jakarta Selatan',   name:'Mitra Kaki-Kaki - Kebayoran',          rating:4.6, reviews:57,  district:'Kec. Kebayoran Baru', distance:4.8, factor:0.98, facility:['Alat alignment komputer','Impact pneumatic'] },
+  { id:'w-gubeng',   city:'Jakarta Selatan',   name:'Gubeng Motorsport - Gubeng',           rating:4.8, reviews:173, district:'Kec. Gubeng',      distance:6.4, factor:1.02, facility:['Heavy-duty lift 5 ton','Kamera QC 360 derajat','Ruang tunggu AC'] },
+  { id:'w-surya',    city:'Surabaya',          name:'Surya Auto Care - Wonokromo',          rating:4.8, reviews:158, district:'Kec. Wonokromo',   distance:2.1, factor:0.99, facility:['7 work bay','Teknisi Honda & Toyota','Ruang anak nyaman'] },
+  { id:'w-techpro',  city:'Surabaya',          name:'TechPro Solution - Oligo',            rating:4.7, reviews:95,  district:'Kec. Oligo',       distance:4.4, factor:1.03, facility:['Diagnostic scanner OEM','Ruang electrical repair'] }
+];
+
+/* Bengkel dengan Mode 3 (stok lokal 0, kirim dari gudang brand) */
+const MODE3_WORKSHOP_IDS = ['w-proauto', 'w-mkaki'];
+
+/* Sesi pemasangan + kuota harian (workshop_daily_session_quotas) */
+const SESSIONS = [
+  { code:'MORNING',   label:'Pagi 09:00 - 12:00', quota:3 },
+  { code:'AFTERNOON', label:'Siang 12:00 - 15:00', quota:3 },
+  { code:'EVENING',   label:'Sore 15:00 - 17:30', quota:4 }
+];
+
+/* Demo quote lokal; produksi membaca signed shipping_quote:{quote_id} dari server. */
+const HOME_ADDRESSES = [
+  { id:'addr-ciputat', label:'Jl. Demo No. 1, Kec. Ciputat, Tangerang Selatan 15411' },
+  { id:'addr-kebayoran', label:'Jl. Demo No. 2, Kec. Kebayoran Baru, Jakarta Selatan 12180' }
+];
+const COURIERS = [
+  { id:'reguler', label:'Reguler (JNE / SiCepat)', eta:'2-4 hari', cost:45000 },
+  { id:'kargo', label:'Kargo darat', eta:'3-6 hari', cost:120000 }
+];
+const PLATFORM_FEE = 5000; // DEFAULT_PLATFORM_SERVICE_FEE_IDR
+const D_SHIP_REGULER = 3;  // estimasi hari kurir reguler (dipakai Mode 3)
+
+/* ─── STATE ENGINE ─── */
+const STATE = {
+  vehicle: 'all',
+  category: 'ALL',
+  query: '',
+  chips: new Set(),
+  pdp: null,
+  city: 'Tangerang Selatan',
+  workshopId: null,
+  mode: 'A',            // A = pasang di bengkel, B = beli produk saja
+  slotDate: null,
+  slotSession: null,
+  lockSeconds: null,
+  waiver: false,
+  addressId: 'addr-ciputat',
+  courierId: 'reguler',
+  postTab: 'pass',
+  variantNote: '2.0 Hybrid CVT',
+  lastFocus: null
+};
+let lockTimer = null;
+
+/* ═══════════ HELPERS ═══════════ */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+const rp  = n => 'Rp ' + Number(n).toLocaleString('id-ID');
+const icons = () => { if (window.lucide) lucide.createIcons(); };
+const vehicle = () => VEHICLES[STATE.vehicle];
+const workshopsInCity = () => WORKSHOPS.filter(w => w.city === STATE.city).sort((a, b) => a.distance - b.distance);
+const stockModeOf = w => MODE3_WORKSHOP_IDS.includes(w.id) ? 3 : 2;
+const selectedCourier = () => COURIERS.find(c => c.id === STATE.courierId) || COURIERS[0];
+const selectedAddress = () => HOME_ADDRESSES.find(a => a.id === STATE.addressId) || HOME_ADDRESSES[0];
+function bookedFor(workshopId, iso, code) {
+  if (!iso) return 0;
+  const key = workshopId + '|' + iso + '|' + code;
+  let hash = 0;
+  for (let i = 0; i < key.length; i++) hash = (hash * 31 + key.charCodeAt(i)) >>> 0;
+  const session = SESSIONS.find(s => s.code === code);
+  return session ? hash % (session.quota + 1) : 0;
+}
+function sessionRemaining(workshopId, iso, code, firstAvailableDate) {
+  const session = SESSIONS.find(s => s.code === code);
+  if (!session) return 0;
+  const booked = iso === firstAvailableDate && code === 'MORNING' ? 0 : bookedFor(workshopId, iso, code);
+  return session.quota - booked;
+}
+
+const BADGE_TONE = {
+  emerald: 'border-emerald-300 bg-emerald-50 text-emerald-800',
+  sky:     'border-sky-300 bg-sky-50 text-sky-800',
+  rose:    'border-rose-300 bg-rose-50 text-rose-900',
+  amber:   'border-amber-400 bg-amberx-50 text-amberx-900',
+  navy:    'border-slate-300 bg-slate-100 text-navy-700'
+};
+
+/* Lencana fitment kontekstual (docs/02 Modul 1.1) */
+function fitBadge(p) {
+  const v = vehicle();
+  if (v.tier === null) {
+    if (p.fitMode === 'UNIVERSAL_FIT') return { tone:'sky', icon:'circle-dot',   text:'Universal' };
+    if (p.fitMode === 'SPEC_BASED')    return { tone:'sky', icon:'ruler',        text:'Sesuai Spesifikasi Ukuran' };
+    return { tone:'sky', icon:'circle-dot', text:'Universal / Sesuai Spesifikasi' };
+  }
+  if (p.fitMode === 'UNIVERSAL_FIT') return { tone:'sky', icon:'circle-dot', text:'Universal (' + v.shortName + ')' };
+  if (p.fitMode === 'SPEC_BASED')    return { tone:'sky', icon:'ruler',      text:'Sesuai Spesifikasi (' + v.shortName + ')' };
+  if (p.fitModels.includes(v.id))    return { tone:'emerald', icon:'circle-check', text:'Cocok untuk ' + v.shortName };
+  return { tone:'rose', icon:'circle-x', text:'Tidak Cocok dengan ' + v.shortName };
+}
+
+/* Tarif jasa dinamis dari matriks Tier 1-4 x faktor cabang */
+function rateFor(p, w) {
+  const v = vehicle();
+  if (v.tier === null) return null;
+  const base = p.rates[v.tier] != null ? p.rates[v.tier] : p.rates.TIER_2;
+  const f = w ? w.factor : 1;
+  return Math.round(base * f / 1000) * 1000;
+}
+function rateRangeLabel(p) {
+  return rp(p.rates.TIER_1) + ' - ' + rp(p.rates.TIER_4);
+}
+
+/* Rumus kalender Tmin (docs/01 §5.1): Mode 2 = H+0, Mode 3 = H + Dprod + Dship + 1 */
+function tMinDays(p, w) {
+  if (!w || stockModeOf(w) === 2) return 0;
+  return p.leadDays + D_SHIP_REGULER + 1;
+}
+function buildDates(count) {
+  const names = ['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
+  const months = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+  const out = [];
+  const today = new Date();
+  for (let i = 0; i < (count || 14); i++) {
+    const d = new Date(today); d.setDate(today.getDate() + i);
+    out.push({
+      iso: d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'),
+      offset: i, day: names[d.getDay()], date: d.getDate(), month: months[d.getMonth()],
+      full: d.toLocaleDateString('id-ID', { weekday:'long', day:'numeric', month:'long', year:'numeric' }),
+      closed: d.getDay() === 0
+    });
+  }
+  return out;
+}
+function fmtDateLong(iso) {
+  if (!iso) return '-';
+  return new Date(iso + 'T00:00:00').toLocaleDateString('id-ID', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+}
+
+/* QR mock deterministik untuk tiket supir */
+function qrCells(seed, n) {
+  let h = 2166136261;
+  for (let i = 0; i < seed.length; i++) { h ^= seed.charCodeAt(i); h = Math.imul(h, 16777619); }
+  const rows = [];
+  for (let r = 0; r < n; r++) {
+    let row = '';
+    for (let c = 0; c < n; c++) {
+      h ^= (h << 13); h ^= (h >>> 17); h ^= (h << 5); h |= 0;
+      const finder = (r < 3 && c < 3) || (r < 3 && c >= n - 3) || (r >= n - 3 && c < 3);
+      row += (finder || Math.abs(h) % 100 < 46) ? '1' : '0';
+    }
+    rows.push(row);
+  }
+  return rows;
+}
+function qrHtml(seed) {
+  const m = qrCells(seed, 11);
+  let cells = '';
+  m.forEach(row => { row.split('').forEach(v2 => { cells += '<span class="aspect-square ' + (v2 === '1' ? 'bg-navy' : 'bg-transparent') + '"></span>'; }); });
+  return '<div class="grid gap-0 rounded-lg bg-white p-2" style="grid-template-columns:repeat(11,1fr)">' + cells + '</div>';
+}
+
+/* Toast demo */
+function toast(msg) {
+  let t = $('#demoToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'demoToast';
+    t.setAttribute('role', 'status');
+    t.setAttribute('aria-live', 'polite');
+    t.className = 'fixed bottom-20 left-1/2 z-[60] hidden max-w-[92vw] -translate-x-1/2 rounded-xl bg-navy px-4 py-3 text-[13px] font-semibold text-white shadow-lift';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.remove('hidden');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.add('hidden'), 3200);
+}
+
+/* ═══════════ RENDER: GARASI, KATEGORI, PRODUK ═══════════ */
+function renderGarasi() {
+  const v = vehicle();
+  const el = $('#tierBadge');
+  if (v.tier === null) {
+    el.innerHTML = '<span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white/70">'
+      + '<i data-lucide="unlock" class="h-3.5 w-3.5"></i>Tanpa Kunci Tier - tarif ditampilkan sebagai rentang Tier 1-4</span>';
+  } else {
+    const t = TIERS[v.tier];
+    el.innerHTML = '<span class="inline-flex items-center gap-1.5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1.5 text-[11px] font-semibold text-emerald-200">'
+      + '<i data-lucide="layers" class="h-3.5 w-3.5"></i>' + v.tier + ' - ' + esc(t.label) + '</span>'
+      + '<span class="hidden text-[11px] leading-tight text-white/50 md:inline">' + esc(t.note) + '</span>';
+  }
+  $('#vehicleSelect').value = STATE.vehicle;
+  icons();
+}
+
+function renderCategories() {
+  $('#categoryGrid').innerHTML = CATEGORIES.map(c => {
+    const active = STATE.category === c.code;
+    return '<button data-cat="' + c.code + '" aria-label="' + esc(c.full + ' - ' + c.sub) + '" aria-pressed="' + active + '" title="' + esc(c.full) + ' - ' + esc(c.sub) + '"'
+      + ' class="group relative flex flex-col items-center gap-1.5 rounded-2xl border px-1.5 py-3 text-center transition '
+      + (active ? 'border-navy bg-navy text-white shadow-card' : 'border-slate-200 bg-white hover:-translate-y-0.5 hover:border-navy hover:shadow-card') + '">'
+      + '<span class="grid h-9 w-9 place-items-center rounded-xl transition '
+      + (active ? 'bg-white/10 text-emerald-300' : 'bg-slate-100 text-navy-700 group-hover:bg-navy group-hover:text-white') + '">'
+      + '<i data-lucide="' + c.icon + '" class="h-[18px] w-[18px]"></i></span>'
+      + '<span class="w-full break-words text-[11px] font-bold leading-tight sm:text-xs">' + esc(c.short) + '</span>'
+      + '<span class="font-mono text-[9px] font-medium ' + (active ? 'text-white/50' : 'text-navy-600/70') + '">' + c.code + '</span>'
+      + '<span class="pointer-events-none absolute left-1/2 top-full z-20 mt-1 hidden w-56 -translate-x-1/2 rounded-xl border border-slate-200 bg-white p-3 text-left shadow-lift group-hover:block">'
+      + '<span class="block text-[11px] font-extrabold text-navy">' + esc(c.full) + '</span>'
+      + '<span class="mt-1 block text-[11px] leading-snug text-navy-600">' + esc(c.sub) + '</span></span></button>';
+  }).join('');
+  icons();
+}
+
+function filterProducts() {
+  const q = STATE.query.trim().toLowerCase();
+  const toks = q ? q.split(/\s+/) : [];
+  return PRODUCTS.filter(p => {
+    if (STATE.category !== 'ALL' && p.cat !== STATE.category) return false;
+    if (STATE.chips.has('ready')    && p.avail !== 'READY') return false;
+    if (STATE.chips.has('preorder') && p.avail !== 'PRE_ORDER') return false;
+    if (STATE.chips.has('warranty') && p.warranty.months <= 0) return false;
+    if (STATE.chips.has('workshop') && !p.mandatory) return false;
+    if (STATE.chips.has('allin')    && !p.included.length) return false;
+    if (!toks.length) return true;
+    const v = vehicle();
+    const fitmentNames = Object.values(VEHICLES).filter(v2 => v2.id !== 'all' && p.fitModels.includes(v2.id)).map(v2 => v2.label + ' ' + v2.shortName).join(' ');
+    const hay = (p.name + ' ' + p.brand + ' ' + p.sku + ' ' + p.sub + ' ' + p.serviceType + ' ' + fitmentNames
+      + (v.tier === null ? '' : v.label + ' ' + v.shortName)).toLowerCase();
+    return toks.every(t => hay.indexOf(t) !== -1);
+  });
+}
+
+function productCard(p) {
+  const fb = fitBadge(p);
+  const v = vehicle();
+  const r = rateFor(p, null);
+  const isPre = p.avail === 'PRE_ORDER';
+  const wt = p.warranty.type === 'AUTHENTICITY_AND_DOA' ? 'Authenticity & DOA' : 'Fungsi Periodik';
+  return '<article class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card transition hover:-translate-y-1 hover:shadow-lift">'
+    + '<div class="relative h-36 bg-navy">'
+    + '<div class="relative flex h-full flex-col justify-between p-4">'
+    + '<span class="inline-flex w-fit items-center gap-1 rounded-md bg-emerald-500/15 px-2 py-1 text-[10px] font-extrabold uppercase tracking-wider text-emerald-300 ring-1 ring-emerald-400/30">'
+    + '<i data-lucide="badge-check" class="h-3 w-3"></i>100% Official Store ' + esc(p.brand) + '</span>'
+    + '<div class="flex items-end justify-between gap-2">'
+    + '<span class="font-mono text-[10px] text-white/60">' + esc(p.sku) + '</span>'
+    + '<span class="font-mono text-[10px] text-white/40">' + esc(p.serviceType) + '</span></div></div></div>'
+    + '<div class="flex flex-1 flex-col gap-2.5 p-4">'
+    + '<div class="flex flex-wrap gap-1.5">'
+    + '<span class="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold ' + BADGE_TONE[fb.tone] + '">'
+    + '<i data-lucide="' + fb.icon + '" class="h-3 w-3"></i>' + esc(fb.text) + '</span>'
+    + '<span class="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-bold ' + (isPre ? BADGE_TONE.amber : BADGE_TONE.emerald) + '">'
+    + '<i data-lucide="' + (isPre ? 'clock' : 'circle-check') + '" class="h-3 w-3"></i>' + (isPre ? 'Pre-Order Custom ' + p.leadDays + ' Hari' : 'Ready Stock') + '</span></div>'
+    + '<h3 class="text-[15px] font-extrabold leading-snug">' + esc(p.name) + '</h3>'
+    + '<p class="text-[12px] leading-relaxed text-navy-600">' + esc(p.sub) + '</p>'
+    + '<span class="inline-flex w-fit items-center gap-1 rounded-full border border-slate-300 bg-slate-50 px-2 py-0.5 text-[10px] font-bold text-navy-700">'
+    + '<i data-lucide="shield" class="h-3 w-3"></i>Garansi Resmi ' + p.warranty.months + ' Bln (' + wt + ') + Pasang 30 Hr</span>'
+    + (p.mandatory ? '<span class="inline-flex w-fit items-center gap-1 rounded-full border border-rose-300 bg-rose-50 px-2 py-0.5 text-[10px] font-bold text-rose-900">'
+      + '<i data-lucide="lock" class="h-3 w-3"></i>Wajib Pasang di Bengkel Rekanan (Mode 2/3)</span>' : '')
+    + '<div class="mt-auto space-y-1 border-t border-dashed border-slate-200 pt-3">'
+    + '<div class="flex items-baseline justify-between gap-2">'
+    + '<span class="text-[10px] font-bold uppercase tracking-wider text-navy-600">Harga Produk</span>'
+    + '<span class="font-mono text-lg font-bold">' + rp(p.price) + '</span></div>'
+    + '<div class="flex items-baseline justify-between gap-2">'
+    + '<span class="text-[10px] font-bold uppercase tracking-wider text-navy-600">Estimasi Pasang</span>'
+    + '<span class="text-right font-mono text-[13px] font-bold ' + (r ? 'text-amberx-600' : 'text-navy-600') + '">'
+    + (r ? '+ Estimasi Pasang ' + TIERS[v.tier].short + ': ' + rp(r) : '+ ' + rateRangeLabel(p)) + '</span></div>'
+    + (v.tier === null ? '<p class="text-[10px] leading-snug text-navy-600">Pilih mobil di <b>Garasi Saya</b> untuk melihat tarif pasti per Tier.</p>' : '')
+    + '</div>'
+    + '<button data-pdp="' + p.id + '" class="mt-1 inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-navy text-[13px] font-bold text-white transition hover:bg-navy-800">'
+    + '<i data-lucide="wrench" class="h-4 w-4"></i>Lihat Detail &amp; Bengkel Terdekat (O2O Preview)</button>'
+    + '</div></article>';
+}
+
+function renderProducts() {
+  const list = filterProducts();
+  $('#productGrid').innerHTML = list.map(productCard).join('');
+  $('#productEmpty').classList.toggle('hidden', list.length > 0);
+  $('#productGrid').classList.toggle('hidden', list.length === 0);
+  const v = vehicle();
+  $('#vehicleContextNote').innerHTML = v.tier === null
+    ? '<i data-lucide="info" class="mr-1 inline h-3.5 w-3.5"></i>Konteks: <b>Belum ada mobil dipilih</b> - tarif jasa ditampilkan sebagai rentang Tier 1-Tier 4.'
+    : '<i data-lucide="car-front" class="mr-1 inline h-3.5 w-3.5"></i>Tarif dikunci untuk <b>' + esc(v.shortName) + '</b> - <span class="font-mono font-semibold">' + v.tier + '</span> - ' + esc(TIERS[v.tier].short);
+  const cat = CATEGORIES.find(c => c.code === STATE.category);
+  $('#productFilterNote').innerHTML = cat
+    ? 'Filter kategori: <b>' + esc(cat.full) + '</b> - ' + list.length + ' produk ditampilkan.'
+    : 'Harga produk dan estimasi tarif jasa pasang berdasarkan mobil yang Anda pilih.';
+  $$('.chip').forEach(c => {
+    const on = STATE.chips.has(c.dataset.chip);
+    c.setAttribute('aria-pressed', on);
+    c.className = 'chip shrink-0 rounded-full border px-2.5 py-1.5 min-h-[32px] text-[11px] font-semibold transition '
+      + (on ? 'border-navy bg-navy text-white' : 'border-slate-200 bg-slate-50 text-navy-700 hover:border-navy-700');
+  });
+  icons();
+}
+
+/* ═══════════ MODAL 1: PDP + INSTANT O2O WORKSHOP & RATE PREVIEW (docs/05 §3.1 & §3.2) ═══════════ */
+function workshopCard(p, w) {
+  const mode = stockModeOf(w);
+  const r = rateFor(p, w);
+  const isM3 = mode === 3;
+  const tmin = tMinDays(p, w);
+  const sel = STATE.workshopId === w.id;
+  return '<div class="flex flex-col gap-2 rounded-xl border-2 bg-white p-3.5 transition ' + (sel ? 'border-emerald-500 shadow-card' : 'border-slate-200') + '">'
+    + '<div class="flex items-start justify-between gap-2"><div class="min-w-0">'
+    + '<p class="flex items-center gap-1 text-[13px] font-extrabold leading-snug">'
+    + '<i data-lucide="star" class="h-3.5 w-3.5 shrink-0 fill-amber-400 text-amber-400"></i><span>' + w.rating.toFixed(1) + '</span>'
+    + '<span class="font-mono text-[11px] font-medium text-navy-600">(' + w.reviews + ')</span>'
+    + '<span class="font-mono text-[11px] font-medium text-navy-600">- ' + w.distance.toFixed(1) + ' km</span></p>'
+    + '<p class="mt-0.5 text-[13px] font-bold leading-tight">' + esc(w.name) + '</p>'
+    + '<p class="mt-0.5 text-[11px] text-navy-600">' + esc(w.district) + ', ' + esc(w.city) + '</p></div>'
+    + '<span class="shrink-0 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-center">'
+    + '<span class="block text-[9px] font-bold uppercase text-navy-600">Tarif Pasang</span>'
+    + '<span class="font-mono text-[12px] font-bold text-amberx-600">' + (r === null ? rateRangeLabel(p) : rp(r)) + '</span></span></div>'
+    + '<div class="flex flex-wrap gap-1">'
+    + w.facility.map(f => '<span class="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[10px] font-semibold text-navy-700">'
+      + '<i data-lucide="image" class="h-2.5 w-2.5"></i>' + esc(f) + '</span>').join('') + '</div>'
+    + '<span class="inline-flex w-fit items-center gap-1.5 rounded-lg border px-2 py-1 text-[11px] font-bold ' + (isM3 ? BADGE_TONE.amber : BADGE_TONE.emerald) + '">'
+    + '<i data-lucide="' + (isM3 ? 'truck' : 'warehouse') + '" class="h-3.5 w-3.5"></i>'
+    + (isM3 ? 'Mode 3: Kirim dari Gudang Brand - Tiba H+' + tmin : 'Mode 2: Stok Ready di Bengkel - Bisa Pasang Hari Ini/Besok') + '</span>'
+    + '<button data-ws="' + w.id + '" class="mt-auto inline-flex h-9 items-center justify-center gap-1.5 rounded-lg text-[12px] font-bold transition '
+    + (sel ? 'bg-emerald-600 text-white' : 'border-2 border-navy text-navy hover:bg-navy hover:text-white') + '">'
+    + '<i data-lucide="calendar-check" class="h-3.5 w-3.5"></i>' + (sel ? 'Terpilih - Lihat Jadwal di Bawah' : 'Pilih & Lihat Jadwal') + '</button></div>';
+}
+
+function renderPdp() {
+  const p = PRODUCTS.find(x => x.id === STATE.pdp);
+  if (!p) return;
+  const v = vehicle();
+  const fb = fitBadge(p);
+  const isPre = p.avail === 'PRE_ORDER';
+  const list = workshopsInCity();
+  const workshop = WORKSHOPS.find(w => w.id === STATE.workshopId) || null;
+  const rBase = rateFor(p, workshop);
+  $('#pdpPanel').innerHTML =
+    '<div class="max-h-[92vh] overflow-y-auto">'
+    + '<div class="sticky top-0 z-10 flex items-start justify-between gap-3 border-b border-slate-200 bg-white/95 px-5 py-4 backdrop-blur sm:px-6">'
+    + '<div class="min-w-0"><p class="flex flex-wrap items-center gap-1.5">'
+    + '<span class="inline-flex items-center gap-1 rounded-md bg-emerald-500/10 px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-700 ring-1 ring-emerald-300">'
+    + '<i data-lucide="badge-check" class="h-3 w-3"></i>100% Official Store ' + esc(p.brand) + '</span>'
+    + '<span class="font-mono text-[11px] text-navy-600">' + esc(p.sku) + '</span></p>'
+    + '<h2 id="pdpTitle" class="mt-1 text-lg font-extrabold leading-snug sm:text-xl">' + esc(p.name) + '</h2></div>'
+    + '<button data-close="pdp" class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-slate-200 text-navy-600 transition hover:bg-slate-50 hover:text-navy">'
+    + '<i data-lucide="x" class="h-5 w-5"></i></button></div>'
+    + '<div class="grid gap-0 lg:grid-cols-[1fr_1.05fr]">'
+    /* LEFT */
+    + '<div class="space-y-4 border-b border-slate-200 p-5 sm:p-6 lg:border-b-0 lg:border-r">'
+    + '<div class="grid grid-cols-2 gap-2">'
+    + '<div class="rounded-xl border border-slate-200 bg-slate-50 p-3"><p class="text-[10px] font-bold uppercase tracking-wider text-navy-600">Harga Produk</p>'
+    + '<p class="mt-0.5 font-mono text-xl font-bold">' + rp(p.price) + '</p></div>'
+    + '<div class="rounded-xl border border-amber-200 bg-amberx-50 p-3"><p class="text-[10px] font-bold uppercase tracking-wider text-amberx-900">Estimasi Jasa Pasang</p>'
+    + '<p class="mt-0.5 font-mono text-xl font-bold text-amberx-700">' + (rBase === null ? rateRangeLabel(p) : rp(rBase)) + '</p></div></div>'
+    + '<div class="flex flex-wrap gap-1.5">'
+    + '<span class="inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-bold ' + BADGE_TONE[fb.tone] + '">'
+    + '<i data-lucide="' + fb.icon + '" class="h-3.5 w-3.5"></i>' + esc(fb.text) + '</span>'
+    + '<span class="inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-bold ' + (isPre ? BADGE_TONE.amber : BADGE_TONE.emerald) + '">'
+    + '<i data-lucide="' + (isPre ? 'clock' : 'circle-check') + '" class="h-3.5 w-3.5"></i>' + (isPre ? 'Pre-Order Custom ' + p.leadDays + ' Hari Kerja' : 'Ready Stock') + '</span>'
+    + '<span class="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-slate-100 px-2.5 py-1 text-[11px] font-bold text-navy-700">'
+    + '<i data-lucide="shield" class="h-3.5 w-3.5"></i>Garansi ' + p.warranty.months + ' Bln + Pasang 30 Hr</span>'
+    + (p.mandatory ? '<span class="inline-flex items-center gap-1 rounded-full border border-rose-300 bg-rose-50 px-2.5 py-1 text-[11px] font-bold text-rose-900">'
+      + '<i data-lucide="lock" class="h-3.5 w-3.5"></i>Wajib Bengkel Rekanan</span>' : '')
+    + '</div>'
+    + '<div><h3 class="text-[11px] font-extrabold uppercase tracking-wider text-navy-600">Spesifikasi Teknis</h3>'
+    + '<ul class="mt-2 space-y-1.5">'
+    + p.specs.map(s => '<li class="flex gap-2 text-[13px] leading-relaxed"><i data-lucide="check" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600"></i><span>' + esc(s) + '</span></li>').join('')
+    + '</ul></div>'
+    + '<div class="overflow-hidden rounded-xl border border-slate-200">'
+    + '<button data-accordion="allin" class="flex w-full items-center justify-between gap-3 bg-slate-50 px-3.5 py-3 text-left">'
+    + '<span class="text-[13px] font-extrabold">Cakupan Jasa Pasang (All-In Shop Supplies) - Skenario 8</span>'
+    + '<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-navy-600"></i></button>'
+    + '<div id="acc-allin" class="hidden border-t border-slate-200 p-3.5">'
+    + '<p class="mb-2 text-[11px] font-bold text-emerald-700">Yang Sudah Termasuk dalam Tarif (tanpa biaya tersembunyi):</p>'
+    + '<ul class="space-y-1.5">' + p.included.map(s => '<li class="flex gap-2 text-[13px] leading-relaxed"><i data-lucide="circle-check" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600"></i><span>' + esc(s) + '</span></li>').join('') + '</ul>'
+    + '<p class="mb-2 mt-4 text-[11px] font-bold text-amberx-700">Opsi Tambahan di Luar Paket (tidak termasuk, dipilih terpisah):</p>'
+    + '<ul class="space-y-1.5">' + p.excluded.map(s => '<li class="flex gap-2 text-[13px] leading-relaxed"><i data-lucide="circle-plus" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-amberx-600"></i><span>' + esc(s) + '</span></li>').join('') + '</ul>'
+    + '</div></div></div>'
+    /* RIGHT: O2O widget */
+    + '<div class="space-y-4 bg-slate-50 p-5 sm:p-6">'
+    + '<div class="rounded-2xl border border-navy/10 bg-white p-4 shadow-card">'
+    + '<h3 class="flex items-center gap-2 text-sm font-extrabold"><i data-lucide="wrench" class="h-4 w-4 text-emerald-600"></i>Layanan Pemasangan Resmi &amp; Jaminan Garansi Penuh</h3>'
+    + '<div class="mt-3 space-y-2.5">'
+    + '<div class="flex flex-wrap items-center gap-2">'
+    + '<span class="inline-flex items-center gap-1 text-[11px] font-bold text-navy-600"><i data-lucide="map-pin" class="h-3.5 w-3.5"></i>Sekitar:</span>'
+    + '<select id="citySelect" class="h-9 rounded-lg border border-slate-300 bg-white px-2 text-[12px] font-bold outline-none focus:border-emerald-500">'
+    + CITIES.map(c => '<option' + (c === STATE.city ? ' selected' : '') + '>' + c + '</option>').join('') + '</select></div>'
+    + '<p class="inline-flex items-center gap-1.5 rounded-lg border border-emerald-300 bg-emerald-50 px-2.5 py-1 text-[12px] font-bold text-emerald-800">'
+    + '<i data-lucide="badge-check" class="h-3.5 w-3.5"></i>Tersedia di ' + list.length + ' Bengkel Rekanan Resmi (Terdekat ' + (list[0] ? list[0].distance.toFixed(1) : '0') + ' km di ' + esc(list[0] ? list[0].district : '-') + ')</p>'
+    + '<div class="flex flex-wrap items-center gap-2">'
+    + '<span class="inline-flex items-center gap-1 text-[11px] font-bold text-navy-600"><i data-lucide="car-front" class="h-3.5 w-3.5"></i>Mobil Anda:</span>'
+    + '<select id="pdpVehicleSelect" class="h-9 max-w-full rounded-lg border border-slate-300 bg-white px-2 text-[12px] font-bold outline-none focus:border-emerald-500">'
+    + Object.values(VEHICLES).map(v2 => '<option value="' + v2.id + '"' + (v2.id === STATE.vehicle ? ' selected' : '') + '>' + esc(v2.label) + (v2.tier ? ' (' + v2.tier + ')' : '') + '</option>').join('') + '</select></div>'
+    + '<div class="rounded-xl border border-amber-200 bg-amberx-50 p-3">'
+    + '<p class="text-[11px] font-bold uppercase tracking-wider text-amberx-900">Tarif Jasa Pasang Resmi (' + esc(p.serviceType) + ')</p>'
+    + '<p class="mt-1 font-mono text-lg font-bold text-amberx-700">' + (rBase === null ? rateRangeLabel(p) : rp(rBase)) + '</p>'
+    + '<p class="mt-0.5 text-[11px] leading-snug text-amberx-900">'
+    + (v.tier === null
+      ? 'Pilih mobil di Garasi Saya untuk mengunci tarif pasti. Rentang di atas adalah Tier 1 - Tier 4.'
+      : 'Dikunci otomatis dari <b>' + v.tier + '</b> (' + esc(TIERS[v.tier].label) + ') - sudah All-In bahan bantu standar.')
+    + (workshop ? ' - Tarif cabang ' + esc(workshop.name.split(' - ')[0]) + ' x' + workshop.factor.toFixed(2) + '.' : '')
+    + '</p></div></div></div>'
+    + '<div class="rounded-2xl border border-slate-200 bg-white p-4">'
+    + '<h4 class="text-[11px] font-extrabold uppercase tracking-wider text-navy-600">Daftar Bengkel Rekanan Resmi</h4>'
+    + '<div class="mt-3 grid gap-3 sm:grid-cols-2">' + list.map(w => workshopCard(p, w)).join('') + '</div>'
+    + '<p class="mt-3 flex items-start gap-2 rounded-lg border border-slate-300 bg-slate-50 p-2.5 text-[11px] leading-snug text-navy-700">'
+    + '<i data-lucide="lock" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-navy"></i>'
+    + '<span><b>Proteksi Anti-Bypass (Law 3 / Skenario 15):</b> Alamat jalan lengkap, nomor telepon darurat, &amp; QR Code Check-in dibuka otomatis setelah pembayaran terverifikasi.</span></p></div>'
+    + renderCheckoutPanel(p)
+    + '</div></div></div>';
+  icons();
+}
+
+/* Panel checkout 3-mode + waiver + booking */
+function renderCheckoutPanel(p) {
+  const workshop = WORKSHOPS.find(w => w.id === STATE.workshopId) || null;
+  const modeA = STATE.mode === 'A';
+  const mandatory = !!p.mandatory;
+  const v = vehicle();
+  const r = rateFor(p, workshop);
+  const courier = selectedCourier();
+  const deliveryCost = courier ? courier.cost : 0;
+  const total = p.price + (modeA ? (r || 0) : deliveryCost) + PLATFORM_FEE;
+  const payDisabled = !modeA && (!STATE.waiver || !selectedAddress() || !courier);
+  let html = '<div class="rounded-2xl border border-slate-200 bg-white p-4">'
+    + '<h4 class="text-[11px] font-extrabold uppercase tracking-wider text-navy-600">1. Pilih Metode Pemenuhan Pesanan</h4>'
+    + '<div class="mt-2.5 space-y-2">'
+    + '<button data-mode="A" class="flex w-full items-start gap-2.5 rounded-xl border-2 p-3 text-left transition ' + (modeA ? 'border-emerald-500 bg-emerald-50' : 'border-slate-200 bg-white hover:border-navy') + '">'
+    + '<i data-lucide="' + (modeA ? 'circle-dot' : 'circle') + '" class="mt-0.5 h-4 w-4 shrink-0 ' + (modeA ? 'text-emerald-600' : 'text-navy-600') + '"></i>'
+    + '<span class="min-w-0"><span class="block text-[13px] font-extrabold">Pasang di Bengkel Rekanan Resmi <span class="ml-1 rounded bg-emerald-600 px-1.5 py-0.5 text-[9px] font-extrabold uppercase text-white">Direkomendasikan</span></span>'
+    + '<span class="mt-0.5 block text-[11px] leading-snug text-navy-600">Garansi Produk ' + p.warranty.months + ' Bulan + Garansi Pasang 30 Hari <b>AKTIF PENUH</b></span></span></button>'
+    + '<button data-mode="B"' + (mandatory ? ' disabled aria-disabled="true"' : '') + ' class="flex w-full items-start gap-2.5 rounded-xl border-2 p-3 text-left transition '
+    + (!modeA && !mandatory ? 'border-amber-500 bg-amberx-50' : 'border-slate-200 bg-slate-50') + (mandatory ? ' cursor-not-allowed opacity-60' : ' hover:border-navy') + '">'
+    + '<i data-lucide="' + (!modeA && !mandatory ? 'circle-dot' : 'circle') + '" class="mt-0.5 h-4 w-4 shrink-0 ' + (!modeA && !mandatory ? 'text-amberx-600' : 'text-navy-600') + '"></i>'
+    + '<span class="min-w-0"><span class="block text-[13px] font-extrabold">Beli Produk Saja / Kirim ke Rumah (Mode 1)</span>'
+    + '<span class="mt-0.5 block text-[11px] leading-snug ' + (mandatory ? 'text-rose-900' : 'text-navy-600') + '">'
+    + (mandatory
+      ? 'Terkunci: produk ini berstatus <b>MANDATORY_WORKSHOP_ONLY</b> (kaca film wajib dipasang di ruang khusus dan bergaransi pemasangan).'
+      : 'Tanpa pemasangan resmi - Garansi fungsi produk <b>TIDAK BERLAKU</b> sejak barang diterima.') + '</span></span></button></div>';
+  html += modeA ? renderBookingPanel(p, workshop) : renderHomeDeliveryPanel();
+  if (!modeA) html += renderWaiverPanel(p);
+  html += '<div class="mt-4 flex flex-wrap items-center gap-3 border-t border-dashed border-slate-200 pt-4">'
+    + '<div class="min-w-0 flex-1"><p class="text-[10px] font-bold uppercase tracking-wider text-navy-600">Total Estimasi</p>'
+    + '<p class="font-mono text-xl font-bold">' + rp(total) + '</p>'
+    + '<p class="text-[10px] text-navy-600">'
+    + (modeA ? 'Termasuk Platform Fee ' + rp(PLATFORM_FEE) : 'Termasuk ongkir ' + esc(courier.label) + ' ' + rp(deliveryCost) + ' dan Platform Fee ' + rp(PLATFORM_FEE))
+    + ' - harga &amp; quote dikunci server saat checkout (Law 4).</p></div>'
+    + '<button id="payBtn"' + (payDisabled ? ' disabled' : '') + ' class="inline-flex h-12 shrink-0 items-center gap-2 rounded-xl px-5 text-[13px] font-extrabold transition '
+    + (payDisabled ? 'cursor-not-allowed bg-slate-200 text-slate-500' : 'bg-emerald-600 text-white hover:bg-emerald-700') + '">'
+    + '<i data-lucide="credit-card" class="h-4 w-4"></i>' + (payDisabled ? (modeA ? 'Pilih Data Booking Dulu' : 'Centang Waiver Dulu') : 'Lanjut Bayar via Midtrans') + '</button></div></div>';
+  return html;
+}
+
+function renderHomeDeliveryPanel() {
+  const courier = selectedCourier();
+  return '<div class="mt-3 rounded-xl border border-slate-200 bg-slate-50 p-3">'
+    + '<h4 class="text-[11px] font-extrabold uppercase tracking-wider text-navy-600">2. Alamat &amp; Pengiriman ke Rumah</h4>'
+    + '<label class="mt-2 block text-[10px] font-bold uppercase text-navy-600" for="addressSelect">Alamat tujuan</label>'
+    + '<select id="addressSelect" aria-label="Alamat pengiriman" class="mt-1 h-10 w-full rounded-lg border border-slate-300 bg-white px-2 text-[12px] font-semibold outline-none focus:border-emerald-500">'
+    + HOME_ADDRESSES.map(a => '<option value="' + a.id + '"' + (a.id === STATE.addressId ? ' selected' : '') + '>' + esc(a.label) + '</option>').join('')
+    + '</select>'
+    + '<p class="mt-3 text-[10px] font-bold uppercase text-navy-600">Pilih kurir</p>'
+    + '<div class="mt-1.5 grid gap-2 sm:grid-cols-2">'
+    + COURIERS.map(c => '<label class="flex cursor-pointer items-start gap-2 rounded-lg border-2 bg-white p-2.5 ' + (c.id === STATE.courierId ? 'border-navy' : 'border-slate-200') + '">'
+      + '<input type="radio" name="courierSelect" value="' + c.id + '"' + (c.id === STATE.courierId ? ' checked' : '') + ' class="mt-0.5 h-4 w-4 accent-emerald-600" />'
+      + '<span class="text-[12px] font-bold">' + esc(c.label) + '<span class="block font-mono text-[11px] text-navy-600">' + esc(c.eta) + ' - ' + rp(c.cost) + '</span></span></label>').join('')
+    + '</div><p class="mt-2 text-[10px] leading-snug text-navy-600">Quote ilustratif untuk prototipe. Produksi mengambil signed Biteship shipping quote dari server, bukan angka browser.</p>'
+    + '</div>';
+}
+
+function renderBookingPanel(p, workshop) {
+  const v = vehicle();
+  if (!workshop) {
+    return '<div class="mt-3 rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-center">'
+      + '<i data-lucide="mouse-pointer-click" class="mx-auto h-5 w-5 text-navy-600"></i>'
+      + '<p class="mt-2 text-[13px] font-semibold">Pilih salah satu Bengkel Rekanan di atas untuk membuka kalender booking.</p></div>';
+  }
+  const mode = stockModeOf(workshop);
+  const isM3 = mode === 3;
+  const minOffset = tMinDays(p, workshop);
+  const dates = buildDates(14);
+  const session = SESSIONS.find(s => s.code === STATE.slotSession);
+  let html = '<div class="mt-3 space-y-3">'
+    + '<div class="rounded-xl border border-slate-200 bg-slate-50 p-3">'
+    + '<h4 class="text-[11px] font-extrabold uppercase tracking-wider text-navy-600">2. Data Kendaraan Pemasangan</h4>'
+    + '<div class="mt-2 grid gap-2 sm:grid-cols-2">'
+    + '<div class="rounded-lg border border-slate-200 bg-white p-2.5"><p class="text-[10px] font-bold uppercase text-navy-600">Kendaraan (dari Garasi Saya)</p>'
+    + '<p class="text-[13px] font-extrabold">' + (v.tier === null ? 'Belum dipilih - wajib diisi' : esc(v.label + ' - ' + v.tier)) + '</p>'
+    + (v.tier === null ? '<button data-act="pickcar" class="mt-1 text-[11px] font-bold text-emerald-700 underline">Pilih mobil dulu</button>' : '') + '</div>'
+    + '<div><label class="text-[10px] font-bold uppercase text-navy-600">Nomor Polisi (Wajib)</label>'
+    + '<input id="plateInput" value="' + esc(STATE.plate != null ? STATE.plate : v.plate) + '" placeholder="B 1889 TKK"'
+    + ' class="mt-0.5 h-9 w-full rounded-lg border border-slate-300 bg-white px-2 font-mono text-[12px] font-bold uppercase outline-none focus:border-emerald-500" /></div>'
+    + '<div class="sm:col-span-2"><label class="text-[10px] font-bold uppercase text-navy-600">Catatan Varian / Mesin / Transmisi</label>'
+    + '<input id="variantInput" value="' + esc(STATE.variant != null ? STATE.variant : STATE.variantNote) + '"'
+    + ' class="mt-0.5 h-9 w-full rounded-lg border border-slate-300 bg-white px-2 text-[12px] outline-none focus:border-emerald-500" /></div>'
+    + '</div></div>'
+    + '<div class="rounded-xl border border-slate-200 bg-white p-3">'
+    + '<h4 class="text-[11px] font-extrabold uppercase tracking-wider text-navy-600">3. Lokasi Bengkel &amp; Jadwal Kedatangan</h4>'
+    + '<p class="mt-1 text-[12px] font-semibold">Bengkel Terpilih: <span class="text-emerald-700">' + esc(workshop.name) + '</span> <span class="font-normal text-navy-600">(' + esc(workshop.district) + ')</span></p>'
+    + '<p class="mt-1 inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-[11px] font-bold ' + (isM3 ? BADGE_TONE.amber : BADGE_TONE.emerald) + '">'
+    + '<i data-lucide="' + (isM3 ? 'truck' : 'warehouse') + '" class="h-3.5 w-3.5"></i>'
+    + (isM3 ? 'Mode 3 (Kirim dari Gudang Brand ke Bengkel)' : 'Mode 2 (Stok Ready di Bengkel - Rp 0 Ongkir)') + '</p>'
+    + '<p class="mt-2 rounded-lg bg-slate-50 p-2 text-[11px] leading-snug text-navy-700">Rumus kalender (Tmin): '
+    + (isM3 ? 'H + Dprod(' + p.leadDays + ') + Dship(' + D_SHIP_REGULER + ') + 1 buffer = <b class="font-mono">H+' + minOffset + '</b>. Tanggal sebelum ini otomatis terkunci (AC-CUST-02).'
+      : 'Mode 2 - stok sudah di bengkel, <b class="font-mono">Tmin = H+0 / H+1</b>.') + '</p>'
+    + '<p class="mt-3 text-[10px] font-bold uppercase tracking-wider text-navy-600">Tanggal Pasang</p>'
+    + '<div class="mt-1.5 grid grid-cols-4 gap-1.5 sm:grid-cols-7">';
+  dates.forEach(d => {
+    const locked = d.offset < minOffset || d.closed;
+    const active = STATE.slotDate === d.iso;
+    html += '<button data-date="' + d.iso + '" aria-label="' + esc(d.full) + '" aria-pressed="' + active + '"' + (locked ? ' disabled' : '')
+      + ' class="rounded-lg border px-1 py-1.5 text-center transition ' + (locked
+        ? 'cursor-not-allowed border-slate-200 bg-slate-100 text-slate-400'
+        : active ? 'border-navy bg-navy text-white' : 'border-slate-300 bg-white hover:border-navy') + '">'
+      + '<span class="block text-[9px] font-bold uppercase ' + (active ? 'text-white/70' : 'text-navy-600') + '">' + d.day + '</span>'
+      + '<span class="block font-mono text-[13px] font-bold">' + d.date + '</span>'
+      + '<span class="block text-[9px]">' + (locked ? (d.closed ? 'Tutup' : 'Kunci') : d.month) + '</span></button>';
+  });
+  html += '</div><p class="mt-1.5 text-[10px] text-navy-600">Tanggal abu-abu = otomatis terkunci oleh rumus Tmin + hari tutup bengkel (Minggu).</p>'
+    + '<p class="mt-3 text-[10px] font-bold uppercase tracking-wider text-navy-600">Sesi Pemasangan</p>'
+    + '<div class="mt-1.5 grid gap-1.5 sm:grid-cols-3">';
+  SESSIONS.forEach(s => {
+    const firstAvailableDate = dates.find(d => d.offset >= minOffset && !d.closed)?.iso;
+    const availabilityDate = STATE.slotDate || firstAvailableDate;
+    const remaining = sessionRemaining(workshop.id, availabilityDate, s.code, firstAvailableDate);
+    const full = remaining <= 0;
+    const active = STATE.slotSession === s.code;
+    html += '<button data-session="' + s.code + '"' + (full ? ' disabled' : '')
+      + ' aria-pressed="' + active + '" class="rounded-lg border px-2.5 py-2 text-left transition ' + (full
+        ? 'cursor-not-allowed border-rose-200 bg-rose-50 text-rose-900'
+        : active ? 'border-navy bg-navy text-white' : 'border-slate-300 bg-white hover:border-navy') + '">'
+      + '<span class="block text-[12px] font-extrabold">' + esc(s.label) + '</span>'
+      + '<span class="mt-0.5 block text-[10px] font-semibold ' + (full ? 'text-rose-700' : remaining === 1 ? 'text-amberx-600' : 'text-navy-600') + (active && !full ? ' text-white/80' : '') + '">'
+      + (full ? 'Penuh (Disabled)' : remaining === 1 ? 'Sisa 1 Slot!' : 'Sisa ' + remaining + ' Slot') + '</span></button>';
+  });
+  html += '</div>'
+    + '<div class="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-lg border p-2.5 ' + (STATE.lockSeconds !== null ? 'border-amber-400 bg-amberx-50' : 'border-dashed border-slate-300 bg-slate-50') + '">'
+    + '<p class="text-[11px] font-bold ' + (STATE.lockSeconds !== null ? 'text-amberx-900' : 'text-navy-600') + '">'
+    + (STATE.lockSeconds !== null ? 'Kuota sesi Anda dikunci sementara untuk pembayaran.' : 'Pilih tanggal &amp; sesi untuk mengunci slot 10 menit.') + '</p>'
+    + '<span id="lockTimer" aria-live="off" class="font-mono text-base font-bold ' + (STATE.lockSeconds !== null ? 'text-amberx-700' : 'text-slate-400') + '">'
+    + (STATE.lockSeconds !== null ? fmtLock(STATE.lockSeconds) : '--:--') + '</span></div>'
+    + (STATE.slotDate ? '<p class="mt-1.5 text-[11px] text-navy-700">Tanggal: ' + fmtDateLong(STATE.slotDate) + (session ? ' - ' + esc(session.label) : '') + '</p>' : '')
+    + '</div></div>';
+  return html;
+}
+
+function renderWaiverPanel(p) {
+  return '<div class="mt-3 rounded-xl border-2 border-amber-400 bg-amberx-50 p-4">'
+    + '<h4 class="flex items-center gap-2 text-[13px] font-extrabold text-amberx-900">'
+    + '<i data-lucide="triangle-alert" class="h-4 w-4"></i>Informasi Penting Perlindungan Garansi (Mode 1)</h4>'
+    + '<p class="mt-2 text-[13px] leading-relaxed text-amberx-900">Anda memilih pengiriman langsung ke alamat rumah <b>tanpa instalasi di Bengkel Rekanan Resmi</b>. '
+    + 'Untuk mencegah kerusakan akibat kesalahan pasang oleh pihak luar, <b>Garansi Fungsi Produk (' + p.warranty.months + ' Bulan) dinyatakan HANGUS</b> sejak barang diterima, '
+    + 'kecuali terbukti cacat fisik saat paket dibuka (unboxing DOA maksimal 1x24 jam).</p>'
+    + '<button data-mode="A" class="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-emerald-400 bg-white px-3 py-2 text-[12px] font-bold text-emerald-700 transition hover:bg-emerald-50">'
+    + '<i data-lucide="refresh-cw" class="h-3.5 w-3.5"></i>Ubah ke Pasang di Bengkel Agar Garansi Aktif</button>'
+    + '<label class="mt-3 flex cursor-pointer items-start gap-2.5 rounded-lg border border-amber-300 bg-white p-3">'
+    + '<input id="waiverCheck" type="checkbox"' + (STATE.waiver ? ' checked' : '') + ' class="mt-0.5 h-4 w-4 shrink-0 accent-emerald-600" />'
+    + '<span class="text-[12px] font-semibold leading-relaxed text-navy-700">Saya memahami dan menyetujui secara sadar bahwa karena saya memilih untuk <b>tidak melakukan pemasangan di Bengkel Rekanan Resmi melalui platform NewTKK</b>, maka '
+    + '<b>jaminan Garansi Produk dinyatakan TIDAK BERLAKU (HANGUS)</b> sejak barang diterima, kecuali terbukti cacat fisik saat paket dibuka (unboxing DOA maksimal 1x24 jam).</span></label>'
+    + '<p class="mt-2 font-mono text-[10px] text-amberx-900">Audit: warranty_waiver_accepted_at (UTC) - warranty_waiver_text_snapshot - customer_ip_address disimpan di tabel orders.</p></div>';
+}
+
+function fmtLock(sec) {
+  return String(Math.floor(sec / 60)).padStart(2, '0') + ':' + String(sec % 60).padStart(2, '0');
+}
+function startLock() {
+  if (STATE.lockSeconds !== null) return;
+  STATE.lockSeconds = 600;
+  toast('Slot dipertahankan selama 10 menit untuk pembayaran.');
+  if (lockTimer) clearInterval(lockTimer);
+  lockTimer = setInterval(() => {
+    STATE.lockSeconds -= 1;
+    const el = $('#lockTimer');
+    if (STATE.lockSeconds <= 0) {
+      clearInterval(lockTimer); lockTimer = null;
+      STATE.lockSeconds = null; STATE.slotDate = null; STATE.slotSession = null;
+      renderPdp();
+      toast('Kunci slot 10 menit kedaluwarsa. Silakan pilih tanggal & sesi lagi.');
+      return;
+    }
+    if (el) el.textContent = fmtLock(STATE.lockSeconds);
+  }, 1000);
+}
+function stopLock() {
+  if (lockTimer) clearInterval(lockTimer);
+  lockTimer = null;
+  STATE.lockSeconds = null;
+}
+
+function openPdp(id) {
+  STATE.lastFocus = document.activeElement;
+  STATE.pdp = id;
+  STATE.workshopId = null;
+  STATE.mode = 'A';
+  STATE.slotDate = null;
+  STATE.slotSession = null;
+  STATE.waiver = false;
+  stopLock();
+  renderPdp();
+  $('#pdpBackdrop').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  $('#pdpPanel [data-close="pdp"]')?.focus();
+}
+function closePdp() {
+  $('#pdpBackdrop').classList.add('hidden');
+  document.body.style.overflow = '';
+  stopLock();
+  STATE.pdp = null;
+  STATE.workshopId = null;
+  if (STATE.lastFocus && typeof STATE.lastFocus.focus === 'function') STATE.lastFocus.focus();
+  STATE.lastFocus = null;
+}
+
+/* ═══════════ SIMULATOR PASCA-PEMBELIAN (docs/05 §3.5) ═══════════ */
+function renderPost() {
+  const el = $('#postPanel');
+  $$('.post-tab').forEach(b => {
+    const on = b.dataset.postTab === STATE.postTab;
+    b.className = 'post-tab shrink-0 rounded-lg px-3.5 py-2 text-xs font-bold transition sm:text-sm '
+      + (on ? 'bg-navy text-white' : 'text-navy-600 hover:bg-slate-100');
+  });
+
+  if (STATE.postTab === 'pass') {
+    const rows = [
+      ['Bengkel', 'Nawilis Auto Service - Cab. BSD'],
+      ['Lokasi', 'Kec. Serpong, Tangerang Selatan'],
+      ['Jadwal', 'Sabtu, 24 Okt 2026 - Pagi (09:00-12:00)'],
+      ['Nomor Polisi', 'B 1889 TKK'],
+      ['Kode Booking', 'BKG-882910'],
+      ['Daftar Pekerjaan', 'Pasang Shockbreaker Full Set (4 Pcs) - TEIN EnduraPro Plus']
+    ];
+    el.innerHTML = '<div class="grid gap-4 lg:grid-cols-[360px_1fr]">'
+      + '<div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-card">'
+      + '<p class="text-[10px] font-bold uppercase tracking-wider text-navy-600">WhatsApp Preview - dikirim ke Supir</p>'
+      + '<div class="mt-3 flex items-center gap-2 border-b border-slate-100 pb-3">'
+      + '<span class="grid h-8 w-8 place-items-center rounded-full bg-emerald-600 text-white"><i data-lucide="wrench" class="h-4 w-4"></i></span>'
+      + '<span class="text-[13px] font-bold">NewTKK <span class="font-normal text-navy-600">- sekarang</span></span></div>'
+      + '<div class="mt-3 rounded-xl bg-[#DCF8C6] p-3">'
+      + '<p class="text-[12px] font-bold">Tiket Kedatangan Kendaraan Anda</p>'
+      + '<p class="mt-0.5 text-[11px] leading-snug">Sesi <b>Pagi 09:00-12:00</b> - 24 Okt 2026</p>'
+      + '<div class="mx-auto mt-2 max-w-[220px]">' + qrHtml('BKG-882910-B-1889TKK') + '</div>'
+      + '<p class="mt-1 text-center font-mono text-lg font-extrabold tracking-[0.3em]">4 8 2 9 1 0</p>'
+      + '<p class="mt-1 text-center text-[9px] font-bold uppercase text-navy-600">6-Digit PIN Check-In</p></div></div>'
+      + '<div class="space-y-3">'
+      + '<div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">'
+      + '<h4 class="flex items-center gap-2 text-sm font-extrabold"><i data-lucide="ticket" class="h-4 w-4 text-emerald-600"></i>Tiket Check-In Supir (Skenario 10)</h4>'
+      + '<p class="mt-1 text-[13px] text-navy-600">Halaman publik terenkripsi <code class="font-mono text-[12px]">/pass/[shareToken]</code>. Hanya berisi data operasional - <b>tidak ada harga, tidak ada akses akun</b>.</p>'
+      + '<dl class="mt-4 grid gap-3 sm:grid-cols-2">'
+      + rows.map(r2 => '<div class="rounded-xl border border-slate-200 bg-slate-50 p-3"><dt class="text-[10px] font-bold uppercase tracking-wider text-navy-600">' + r2[0] + '</dt>'
+        + '<dd class="mt-0.5 text-[13px] font-semibold">' + esc(r2[1]) + '</dd></div>').join('') + '</dl>'
+      + '<p class="mt-3 flex items-start gap-2 rounded-lg border border-emerald-300 bg-emerald-50 p-2.5 text-[11px] leading-snug text-emerald-900">'
+      + '<i data-lucide="shield-check" class="mt-0.5 h-3.5 w-3.5 shrink-0"></i>'
+      + '<span>Tombol <b>Bagikan Tiket Kedatangan (QR &amp; PIN)</b> tersedia setelah status <code class="font-mono">READY_AT_WORKSHOP_FOR_INSTALL</code>.</span></p></div>'
+      + '<div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">'
+      + '<h4 class="flex items-center gap-2 text-sm font-extrabold"><i data-lucide="smartphone" class="h-4 w-4 text-navy"></i>Remote Owner Handover Approval</h4>'
+      + '<p class="mt-1 text-[13px] text-navy-600">Saat status <code class="font-mono text-[12px]">AWAITING_CUSTOMER_HANDOVER</code>, pemilik akun menerima notifikasi WhatsApp dan push notification. Batas konfirmasi otomatis: <b>2x24 jam (48 jam)</b>.</p>'
+      + '<div class="mt-3 flex flex-wrap gap-2">'
+      + '<button data-demo="handover-ok" class="inline-flex h-11 items-center gap-2 rounded-xl bg-emerald-600 px-4 text-[13px] font-bold text-white transition hover:bg-emerald-700"><i data-lucide="circle-check" class="h-4 w-4"></i>Konfirmasi Pekerjaan Selesai</button>'
+      + '<button data-demo="handover-incident" class="inline-flex h-11 items-center gap-2 rounded-xl border-2 border-rose-400 bg-white px-4 text-[13px] font-bold text-rose-700 transition hover:bg-rose-50"><i data-lucide="triangle-alert" class="h-4 w-4"></i>Laporkan Insiden / Kendala Pengerjaan</button>'
+      + '</div></div></div></div>';
+  }
+
+  if (STATE.postTab === 'qc') {
+    const wm = [
+      'NEWTKK VERIFIED QC',
+      'BOOKING: BKG-882910 | PLAT: B 1889 TKK',
+      'SERVER TIME: 24/10/2026 11:42:07 WIB',
+      'GPS_VERIFIED_AT_WORKSHOP: 12.4 m'
+    ];
+    const photo = (title, after) =>
+      '<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">'
+      + '<p class="border-b border-slate-100 px-4 py-2.5 text-[11px] font-extrabold uppercase tracking-wider text-navy-600">' + title + '</p>'
+      + '<div class="relative h-56 ' + (after ? 'bg-navy' : 'bg-slate-300') + '">'
+      + '<div class="absolute inset-0 flex items-center justify-center"><i data-lucide="' + (after ? 'circle-check' : 'car-front') + '" class="h-12 w-12 text-white/40"></i></div>'
+      + (after ? '<div class="absolute inset-x-0 bottom-0 bg-navy/95 px-3 py-2">'
+        + wm.map(l2 => '<p class="font-mono text-[9px] font-bold leading-tight ' + (l2.indexOf('NEWTKK') === 0 || l2.indexOf('GPS') === 0 ? 'text-emerald-300' : 'text-white/85') + '">' + esc(l2) + '</p>').join('')
+        + '</div>' : '')
+      + '</div><p class="px-4 py-2.5 text-[12px] text-navy-600">' + (after
+        ? 'Foto produk terpasang - watermark di-burn ke piksel oleh server via sharp sebelum diunggah ke Cloudflare R2.'
+        : 'Foto kondisi awal kendaraan (minimal 2 foto saat check-in) - pembanding resmi bila ada insiden.') + '</p></div>';
+    el.innerHTML = '<div class="grid gap-4 lg:grid-cols-2">'
+      + photo('Sebelum - PRE_INSTALL_CONDITION', false)
+      + photo('Sesudah - POST_INSTALL_QC', true)
+      + '<div class="space-y-3 lg:col-span-2">'
+      + '<div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">'
+      + '<h4 class="flex items-center gap-2 text-sm font-extrabold"><i data-lucide="camera" class="h-4 w-4 text-emerald-600"></i>Watermark Otoritatif Server (Law 8)</h4>'
+      + '<p class="mt-1 text-[13px] leading-relaxed text-navy-600">Seluruh foto QC diproses server-side via <code class="font-mono text-[12px]">QcMediaWatermarkService</code> menggunakan <code class="font-mono text-[12px]">sharp</code> - timestamp server dalam zona waktu cabang (WIB/WITA/WIT), kode booking, plat nomor, dan jarak GPS PostGIS di-burn ke dalam piksel gambar.</p></div>'
+      + '<div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">'
+      + '<h4 class="flex items-center gap-2 text-sm font-extrabold"><i data-lucide="list-checks" class="h-4 w-4 text-navy"></i>Old Parts Checklist (Skenario 14)</h4>'
+      + '<p class="mt-1 text-[13px] text-navy-600">Komponen lama wajib berstatus - mencegah tuduhan bengkel mengambil part bawaan mobil.</p>'
+      + '<div class="mt-3 grid gap-2 sm:grid-cols-2">'
+      + '<label class="flex cursor-pointer items-start gap-2 rounded-xl border-2 border-emerald-500 bg-emerald-50 p-3">'
+      + '<input type="radio" name="oldparts" checked class="mt-0.5 h-4 w-4 accent-emerald-600" />'
+      + '<span class="text-[13px] font-bold">RETURNED_TO_TRUNK<br /><span class="text-[11px] font-normal text-navy-600">Komponen lama dikemas &amp; dimasukkan ke bagasi (disertai 1 foto opsional di bagasi).</span></span></label>'
+      + '<label class="flex cursor-pointer items-start gap-2 rounded-xl border-2 border-slate-200 bg-white p-3">'
+      + '<input type="radio" name="oldparts" class="mt-0.5 h-4 w-4 accent-slate-600" />'
+      + '<span class="text-[13px] font-bold">DISPOSED_WITH_CONSENT<br /><span class="text-[11px] font-normal text-navy-600">Komponen lama (oli bekas, filter kotor, aki soak) ditinggal/dibuang atas persetujuan konsumen.</span></span></label></div>'
+      + '<p class="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-emerald-300 bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-800">'
+      + '<i data-lucide="circle-check" class="h-3.5 w-3.5"></i>Dikembalikan ke Bagasi - Selesai</p></div></div></div>';
+  }
+
+  if (STATE.postTab === 'warranty') {
+    const installPct = Math.round(26 / 30 * 100);
+    const productPct = Math.round(361 / 365 * 100);
+    const flow = [
+      'CLAIM_SUBMITTED - konsumen unggah foto/video & pilih jadwal cek',
+      'INSPECTION_SCHEDULED - datang ke bengkel pemasangan / rekana terdekat',
+      'UNDER_WORKSHOP_DIAGNOSIS - cek segel & kecocokan plat nomor',
+      'Hasil A: Kendala instalasi - RESOLVED_BY_WORKSHOP_REWORK (gratis hari itu)',
+      'Hasil B: Tabrakan / modifikasi luar - CLAIM_REJECTED_WITH_PROOF',
+      'Hasil C: Indikasi cacat pabrik - INTERNAL_3WAY_TRIAGE (SLA Brand 2x24 jam, mediator NewTKK ketok palu bila buntu)',
+      'REPLACEMENT_DISPATCHED - CLAIM_REPLACEMENT_INSTALLED (Rp 0)'
+    ];
+    const meta = [
+      ['Kendaraan Terikat', 'Toyota Kijang Innova Zenix (AG10) - 2024 - TIER_2', 'B 1889 TKK'],
+      ['Produk Terpasang', 'TEIN EnduraPro Plus Shockbreaker Set (4 Pcs)', 'Unit #1 - Depan Kiri'],
+      ['Nomor Seri Resmi', 'SN-TEIN-99281726-FL', ''],
+      ['Dipasang Oleh', 'Nawilis Auto Service - Cabang BSD', '24 Okt 2026']
+    ];
+    el.innerHTML = '<div class="grid gap-4 lg:grid-cols-[1.2fr_1fr]">'
+      + '<div class="rounded-3xl border-2 border-navy/15 bg-white p-5 shadow-lift sm:p-6">'
+      + '<div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">'
+      + '<h4 class="flex items-center gap-2 text-[15px] font-extrabold"><i data-lucide="shield-check" class="h-5 w-5 text-emerald-600"></i>Sertifikat Garansi Digital Resmi NewTKK</h4>'
+      + '<span class="font-mono text-[11px] font-bold text-navy-600">No: NTKK-WRT-202610-88912</span></div>'
+      + '<dl class="mt-4 space-y-2.5">'
+      + meta.map(m2 => '<div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-dashed border-slate-100 pb-2">'
+        + '<dt class="text-[10px] font-bold uppercase tracking-wider text-navy-600">' + m2[0] + '</dt>'
+        + '<dd class="text-[13px] font-bold">' + esc(m2[1]) + (m2[2] ? ' <span class="ml-1 rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] text-navy-700">' + esc(m2[2]) + '</span>' : '') + '</dd></div>').join('')
+      + '</dl><div class="mt-5 space-y-4">'
+      + '<div><div class="flex flex-wrap items-baseline justify-between gap-2">'
+      + '<p class="text-[12px] font-extrabold text-emerald-700">Garansi Instalasi Bengkel : AKTIF</p>'
+      + '<p class="font-mono text-[11px] font-bold">Sisa 26 Hari - s/d 23 Nov 2026</p></div>'
+      + '<div class="mt-1.5 h-2.5 overflow-hidden rounded-full bg-slate-200"><div class="h-full rounded-full bg-emerald-500" style="width:' + installPct + '%"></div></div>'
+      + '<p class="mt-1 text-[11px] text-navy-600">Mencakup: bunyi tidak wajar pasca-pasang, kekencangan baut, kebocoran paking sil, &amp; kesalahan penyetelan.</p></div>'
+      + '<div><div class="flex flex-wrap items-baseline justify-between gap-2">'
+      + '<p class="text-[12px] font-extrabold text-emerald-700">Garansi Produk Official Brand : AKTIF</p>'
+      + '<p class="font-mono text-[11px] font-bold">Sisa 361 Hari - s/d 24 Okt 2027</p></div>'
+      + '<div class="mt-1.5 h-2.5 overflow-hidden rounded-full bg-slate-200"><div class="h-full rounded-full bg-emerald-500" style="width:' + productPct + '%"></div></div>'
+      + '<p class="mt-1 text-[11px] text-navy-600">Mencakup: kebocoran oli tabung, cacat fungsi redaman, &amp; cacat pabrik. Tipe FUNCTIONAL_PERIODIC.</p></div></div>'
+      + '<div class="mt-5 flex flex-wrap gap-2">'
+      + '<button data-demo="claim" class="inline-flex h-11 items-center gap-2 rounded-xl bg-navy px-4 text-[13px] font-bold text-white transition hover:bg-navy-800"><i data-lucide="file-warning" class="h-4 w-4"></i>Ajukan Klaim Garansi Satu Pintu</button>'
+      + '<button id="transferBtn" class="inline-flex h-11 items-center gap-2 rounded-xl border-2 border-navy bg-white px-4 text-[13px] font-bold text-navy transition hover:bg-navy hover:text-white"><i data-lucide="refresh-cw" class="h-4 w-4"></i><span id="transferLabel">Transfer ke Pemilik Mobil Baru (1x)</span></button>'
+      + '</div><p class="mt-2 text-[10px] text-navy-600">Maksimal <code class="font-mono">MAX_WARRANTY_OWNERSHIP_TRANSFERS = 1</code>. Selama plat / VIN sama, sisa masa garansi tetap aktif di akun pemilik baru.</p></div>'
+      + '<div class="space-y-3">'
+      + '<div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">'
+      + '<h4 class="flex items-center gap-2 text-sm font-extrabold"><i data-lucide="git-branch" class="h-4 w-4 text-navy"></i>Alur Klaim 3-Arah (Anti-Pingpong)</h4>'
+      + '<ol class="mt-3 space-y-2">'
+      + flow.map((s, i) => '<li class="flex gap-2.5 text-[12.5px] leading-relaxed">'
+        + '<span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-navy font-mono text-[10px] text-white">' + (i + 1) + '</span>'
+        + '<span>' + esc(s) + '</span></li>').join('') + '</ol></div>'
+      + '<div class="rounded-2xl border border-emerald-300 bg-emerald-50 p-5 shadow-card">'
+      + '<h4 class="text-sm font-extrabold text-emerald-900">Yang Anda dapatkan sebagai konsumen</h4>'
+      + '<ul class="mt-2 space-y-1.5 text-[12.5px] text-emerald-900">'
+      + '<li>- Tidak perlu berurusan Brand vs Bengkel - semua lewat satu tiket NewTKK.</li>'
+      + '<li>- Cacat produk pabrik: dijamin unit baru, biaya pemasangan ulang Rp 0.</li>'
+      + '<li>- Garansi mengikuti mobil (plat/VIN), bukan mengikuti orang yang membeli.</li></ul></div></div></div>';
+  }
+  icons();
+}
+
+/* ═══════════ MODAL 2: CARA KERJA O2O ═══════════ */
+function renderHowItWorks() {
+  const steps = [
+    ['Pilih Mobil (Soft-Fitment)', 'car-front', 'Pilih merek - model - tahun di Garasi Saya. Tidak wajib, tidak memblokir menjelajah. Sistem mengunci Tier 1-4 dari master data pusat dan menampilkan tarif jasa yang tepat.'],
+    ['Cek Double Fitment', 'shield-check', 'Produk bertanda Cocok untuk mobil Anda (pemetaan MMY) atau Universal / Sesuai Spesifikasi. Bengkel yang tampil sudah berafiliasi AKTIF dengan Brand dan mendukung service type produk ini.'],
+    ['Bayar (Harga Server-Side)', 'lock', 'Checkout mengabaikan semua angka dari browser (Law 4). Harga produk, tarif jasa, dan ongkir diambil dari server lalu di-snapshot ke dalam pesanan.'],
+    ['Verifikasi Fitment oleh Brand', 'badge-check', 'SLA 1x4 jam kerja: Brand menyetujui (APPROVE_FITMENT), menandai ketidakcocokan untuk alternatif (FLAG_MISMATCH_SUGGEST_ALT), atau menolak dengan refund penuh 100% sebelum barang dikirim.'],
+    ['Pasang & Bukti QC', 'camera', 'Check-in QR/PIN, foto kondisi awal minimal 2, pemindaian nomor seri per unit, lalu foto QC dengan watermark server. Komponen lama wajib dikembalikan ke bagasi.'],
+    ['Sertifikat Garansi Terbit', 'shield-check', 'Status COMPLETED_AND_SETTLED menerbitkan 1 sertifikat digital: garansi instalasi 30 hari + garansi produk resmi. Semua klaim lewat satu tiket.']
+  ];
+  $('#howPanel').innerHTML = '<div class="space-y-3">'
+    + steps.map((s, i) => '<div class="flex gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5">'
+      + '<span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-navy text-white"><i data-lucide="' + s[1] + '" class="h-4 w-4"></i></span>'
+      + '<div class="min-w-0"><p class="text-[13px] font-extrabold">' + (i + 1) + '. ' + esc(s[0]) + '</p>'
+      + '<p class="mt-0.5 text-[13px] leading-relaxed text-navy-600">' + esc(s[2]) + '</p></div></div>').join('')
+    + '<div class="rounded-xl border border-emerald-300 bg-emerald-50 p-4">'
+    + '<p class="text-[13px] font-bold text-emerald-900">Coba langsung di halaman ini:</p>'
+    + '<p class="mt-1 text-[13px] leading-relaxed text-emerald-900">1) Ganti mobil di <b>Garasi Saya</b> dan lihat tarif pasang berubah. 2) Klik produk apa pun untuk membuka preview bengkel. 3) Gulir ke <b>Simulasi Pasca-Pembelian</b> untuk tiket supir, QC watermark, dan garansi digital.</p></div></div>';
+  icons();
+}
+function openHow() {
+  renderHowItWorks();
+  $('#howBackdrop').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+function closeHow() {
+  $('#howBackdrop').classList.add('hidden');
+  if ($('#pdpBackdrop').classList.contains('hidden')) document.body.style.overflow = '';
+}
+
+/* Simpan input plat & varian sebelum PDP di-render ulang */
+function syncPdpInputs() {
+  const plate = $('#plateInput');
+  const variant = $('#variantInput');
+  if (plate) STATE.plate = plate.value;
+  if (variant) STATE.variant = variant.value;
+}
+
+/* ═══════════ EVENT BINDING + INIT ═══════════ */
+document.addEventListener('click', e => {
+  const t = e.target;
+  const hit = sel => t.closest(sel);
+  let m;
+
+  if ((m = hit('[data-close="pdp"]'))) { closePdp(); return; }
+  if ((m = hit('[data-close="how"]'))) { closeHow(); return; }
+
+  if ((m = hit('[data-cat]'))) {
+    STATE.category = (STATE.category === m.dataset.cat) ? 'ALL' : m.dataset.cat;
+    renderCategories(); renderProducts();
+    $('#productGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  if (hit('#catReset') || hit('#emptyReset')) {
+    STATE.category = 'ALL'; STATE.chips.clear(); STATE.query = '';
+    const si = $('#searchInput'); if (si) si.value = '';
+    renderCategories(); renderProducts();
+    return;
+  }
+  if ((m = hit('[data-chip]'))) {
+    const k = m.dataset.chip;
+    if (STATE.chips.has(k)) STATE.chips.delete(k); else STATE.chips.add(k);
+    renderProducts();
+    return;
+  }
+  if ((m = hit('[data-pdp]'))) { openPdp(m.dataset.pdp); return; }
+
+  if ((m = hit('[data-ws]'))) {
+    syncPdpInputs();
+    if (STATE.workshopId !== m.dataset.ws) {
+      STATE.workshopId = m.dataset.ws;
+      STATE.slotDate = null; STATE.slotSession = null;
+      stopLock();
+    }
+    renderPdp();
+    return;
+  }
+  if ((m = hit('[data-mode]'))) {
+    if (m.disabled) return;
+    syncPdpInputs();
+    if (STATE.mode !== m.dataset.mode) {
+      STATE.mode = m.dataset.mode;
+      STATE.slotDate = null; STATE.slotSession = null;
+      stopLock();
+      if (STATE.mode === 'A') STATE.waiver = false;
+    }
+    renderPdp();
+    return;
+  }
+  if ((m = hit('[data-date]'))) {
+    if (m.disabled) return;
+    syncPdpInputs();
+    const changed = STATE.slotDate !== m.dataset.date;
+    STATE.slotDate = m.dataset.date;
+    if (changed && STATE.slotDate && STATE.slotSession && STATE.lockSeconds === null) startLock();
+    renderPdp();
+    return;
+  }
+  if ((m = hit('[data-session]'))) {
+    if (m.disabled) return;
+    syncPdpInputs();
+    const changed = STATE.slotSession !== m.dataset.session;
+    STATE.slotSession = m.dataset.session;
+    if (changed && STATE.slotDate && STATE.slotSession && STATE.lockSeconds === null) startLock();
+    renderPdp();
+    return;
+  }
+  if (hit('[data-accordion]')) {
+    const acc = $('#acc-allin');
+    if (acc) acc.classList.toggle('hidden');
+    return;
+  }
+  if (hit('[data-act="pickcar"]')) {
+    syncPdpInputs();
+    closePdp();
+    const g = document.querySelector('section.bg-navy');
+    if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => { const s = $('#vehicleSelect'); if (s) s.focus(); }, 450);
+    return;
+  }
+  if (hit('#payBtn')) {
+    const btn = hit('#payBtn');
+    if (btn.disabled) return;
+    syncPdpInputs();
+    const p = PRODUCTS.find(x => x.id === STATE.pdp);
+    const v = vehicle();
+    const plate = (STATE.plate != null ? STATE.plate : v.plate).trim();
+    if (!p) return;
+    if (STATE.mode === 'A') {
+      const w = WORKSHOPS.find(x => x.id === STATE.workshopId);
+      if (!w) { toast('Pilih salah satu Bengkel Rekanan di atas dulu.'); return; }
+      if (!plate) { toast('Isi Nomor Polisi kendaraan dulu (wajib untuk check-in & garansi).'); return; }
+      if (!STATE.slotDate || !STATE.slotSession) { toast('Pilih tanggal & sesi pemasangan untuk mengunci slot 10 menit.'); return; }
+      const selectedSession = SESSIONS.find(s => s.code === STATE.slotSession);
+      const firstAvailableDate = buildDates(14).find(d => d.offset >= tMinDays(p, w) && !d.closed)?.iso;
+      const slotAvailable = selectedSession && sessionRemaining(w.id, STATE.slotDate, selectedSession.code, firstAvailableDate) > 0;
+      if (!slotAvailable) { toast('Sesi ini sudah penuh pada tanggal terpilih. Silakan pilih sesi lain.'); return; }
+      toast('Demo: slot ' + fmtDateLong(STATE.slotDate) + ' terkunci 10 menit. Lanjut ke Midtrans (batas 60 menit).');
+    } else {
+      toast('Demo: waiver tercatat (timestamp UTC + IP). Lanjut ke Midtrans - garansi fungsi hangus.');
+    }
+    return;
+  }
+
+  if ((m = hit('.post-tab'))) { STATE.postTab = m.dataset.postTab; renderPost(); return; }
+  if (hit('#ctaPickCar')) {
+    const g = document.querySelector('section.bg-navy');
+    if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => { const s = $('#vehicleSelect'); if (s) s.focus(); }, 450);
+    return;
+  }
+  if (hit('#ctaHowItWorks')) { openHow(); return; }
+  if (hit('#floatingWarranty')) { $('#postPurchase').scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+
+  if (hit('[data-demo="handover-ok"]')) { toast('Demo: pekerjaan dikonfirmasi selesai. Sertifikat garansi digital diterbitkan.'); return; }
+  if (hit('[data-demo="handover-incident"]')) { toast('Demo: tiket insiden dibuka. Dana jasa bengkel dibekukan mediator sampai selesai.'); return; }
+  if (hit('[data-demo="claim"]')) { toast('Demo: form klaim satu pintu dibuka. Pilih keluhan, unggah bukti, pilih jadwal inspeksi.'); return; }
+  if ((m = hit('#transferBtn'))) {
+    if (m.disabled) return;
+    m.disabled = true;
+    m.classList.add('opacity-60');
+    const lbl = $('#transferLabel');
+    if (lbl) lbl.textContent = 'Sudah Ditransfer (0 tersisa)';
+    toast('Demo: undangan transfer dikirim ke pemilik baru via email + WhatsApp (maks 1x).');
+    return;
+  }
+});
+
+document.addEventListener('change', e => {
+  const t = e.target;
+  if (t.id === 'vehicleSelect') {
+    STATE.vehicle = t.value;
+    renderGarasi(); renderProducts();
+    if (STATE.pdp) { syncPdpInputs(); renderPdp(); }
+    return;
+  }
+  if (t.id === 'pdpVehicleSelect') {
+    STATE.vehicle = t.value;
+    renderGarasi(); renderProducts();
+    syncPdpInputs(); renderPdp();
+    return;
+  }
+  if (t.id === 'citySelect') {
+    STATE.city = t.value;
+    STATE.workshopId = null;
+    STATE.slotDate = null; STATE.slotSession = null;
+    stopLock();
+    syncPdpInputs(); renderPdp();
+    return;
+  }
+  if (t.id === 'waiverCheck') {
+    STATE.waiver = t.checked;
+    syncPdpInputs(); renderPdp();
+    return;
+  }
+  if (t.id === 'addressSelect') {
+    STATE.addressId = t.value;
+    renderPdp();
+    return;
+  }
+  if (t.name === 'courierSelect') {
+    STATE.courierId = t.value;
+    renderPdp();
+    return;
+  }
+});
+
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.id === 'searchInput') { STATE.query = t.value; renderProducts(); return; }
+  if (t.id === 'plateInput') { STATE.plate = t.value; return; }
+  if (t.id === 'variantInput') { STATE.variant = t.value; return; }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (!$('#howBackdrop').classList.contains('hidden')) closeHow();
+  else if (!$('#pdpBackdrop').classList.contains('hidden')) closePdp();
+});
+
+$('#pdpBackdrop').addEventListener('click', e => { if (e.target.id === 'pdpBackdrop') closePdp(); });
+$('#howBackdrop').addEventListener('click', e => { if (e.target.id === 'howBackdrop') closeHow(); });
+
+/* Offset sticky Garasi = tinggi header aktual (anti overlap) */
+function syncGarasiOffset() {
+  const header = document.querySelector('header');
+  const garasi = document.querySelector('section.bg-navy');
+  if (header && garasi) garasi.style.top = header.offsetHeight + 'px';
+}
+window.addEventListener('resize', syncGarasiOffset);
+
+/* INIT */
+renderGarasi();
+renderCategories();
+renderProducts();
+renderPost();
+syncGarasiOffset();
+icons();
+</script>
+</body>
+</html>
